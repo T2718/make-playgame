@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width" />
     <script>
       localStorage.setItem('Now','./Library/library-play.html')
-      if(localStorage.getItem('name') == null) window.location.href = "./login.html";
+      if(localStorage.getItem('name') == null){
+        window.location.href = "./login.html";
+      } else {
+        document.getElementById('h2_title').innerText = localStorage.getItem('name')+"さんこんにちは！";
+      }
     </script>
-    <title>HomePage</title>
+    <title>Make&PlayGame</title>
   </head>
   <body>
+    <h1>[Make&PlayGame]</h1>
+    <h2 id="h2_title"></h2>
     <a href="./Makegame/make.html">MakeGame</a>
     <br> <a href="./Library/library-play.html">Library</a>
   </body>
