@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>LogIn</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script>
+    let href = "";
+    if(localStorage.getItem('name') != null){
+      if(localStorage.getItem('now') != null){
+        href = localStorage.getItem('now');
+      } else {
+        href = "./homepage.html";
+      }
+      window.location.href = href;
+    }
+  </script>
+</head>
+
+<body>
+  Hello<br>
+  <label>名前:<input id="name" type="text" placeholder="なまえを入力してください。" value="" /></label>
+  <input type="button" value="Check" id="check">
+
+  <script>
+    
+    let name = document.getElementById('name');
+    let button = document.getElementById('check');
+
+    button.addEventListener("click",()=>{
+      localStorage.setItem('name',name.value);
+      if(localStorage.getItem('now') == null){
+        href = "./homepage.html";
+      } else {
+        href = localStorage.getItem('now');
+      }
+      window.location.href = href;
+    });
+  </script>
+</body>
+
+</html>
