@@ -1,2 +1,2 @@
-# Make-PlayGame.github.io
-ゲームを作るサイト
+# Make-Play Game!
+ゲームを作ったり遊んだりするサイト
