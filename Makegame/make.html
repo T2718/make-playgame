@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <script>
+      localStorage.setItem('Now','./Makegame/make.html')
+      if(localStorage.getItem('name') == null) window.location.href = "../login.html";
+    </script>
     <style src="./make_style.css"></style>
     <link href="./make_style.css" rel="stylesheet" type="text/css">
     <title>MakeGame</title>
