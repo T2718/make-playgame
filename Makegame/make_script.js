@@ -2,7 +2,7 @@ var txt = "";
 
 function get_text(){
   alert('get');
-  txt = document.getElementByID("code_txt").value;
+  txt = document.getElementById("code_txt").value;
   alert(txt);
 }
 
