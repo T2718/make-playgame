@@ -22,8 +22,6 @@
       localStorage.setItem('Now','./Library/library-play.html')
       if(localStorage.getItem('name') == null){
         window.location.href = "./login.html";
-      } else {
-        document.getElementById('h2_title').innerText = localStorage.getItem('name')+"さんこんにちは！";
       }
     </script>
     <title>Make&PlayGame</title>
@@ -36,8 +34,17 @@
     <!-- End Google Tag Manager (noscript) -->
     
     <h1>[Make&PlayGame]</h1>
-    <h2 id="h2_title"></h2>
+    <h2 id="h2_title">こんにちは</h2>
+    <p>ゲームを作る場合は<b>MakeGame</b>を
+    <br>他の人が作ったゲームを遊ぶ場合は<b>Library</b>を押してください。</p>
+
     <a href="./Makegame/make.html">MakeGame</a>
     <br> <a href="./Library/library-play.html">Library</a>
+    
+
+    
+    <script>
+      document.getElementById('h2_title').innerText = localStorage.getItem('name')+"さんこんにちは！";
+    </script>
   </body>
 </html>
