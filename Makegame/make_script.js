@@ -1,6 +1,7 @@
-var txt = "";
+//var txt = "";
 
 function get_text(){
+  var txt = "";
   alert('get');
   txt = document.getElementById("code_txt").value;
   alert(txt);
