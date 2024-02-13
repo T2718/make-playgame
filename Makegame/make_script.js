@@ -1,7 +1,7 @@
 var txt = "";
 
 function get_text(){
-  txt = document.getElementByID("hoge").innerText;
+  txt = document.getElementByID("code_txt").innerText;
   alert(txt);
 }
 
