@@ -1,3 +1,10 @@
+var txt = "";
+
+function get_text(){
+  txt = document.getElementByID("hoge").innerText;
+  alert(txt);
+}
+
 function main(){
   alert('hey');
   setTimeout(()=>{
