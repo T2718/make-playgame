@@ -28,7 +28,7 @@ function get_text(){
   //alert('get');
   txt = document.getElementById("code_txt").value;
   alert(txt);
-  post("https://7407c519-8267-4970-933f-2eac052a65ad-00-28itlomxnhxxx.pike.replit.dev/db_post",{"keys":"name,code","name":localStorage
+  post("https://7407c519-8267-4970-933f-2eac052a65ad-00-28itlomxnhxxx.pike.replit.dev/db_post",{"keys":"name,code","name":localStorage.getItem('name'),"code":txt})
 }
 
 function main(){
