@@ -50,7 +50,7 @@ let move_x = false;
 let hold_tf_first = true;
 let hard_all_tf = true;
 let on_time_base = 0.5;
-const side_v = 3.2;
+const side_v = 2.5;
 
 
 
@@ -95,7 +95,7 @@ function back(r_k,left_k,up_k,n_width_k,n_height_k){
   fill(0);
   rect(left_k+r_k,up_k,r_k*(n_width_k-2),r_k*(n_height_k-3));
   for (let k = 1; k < n_width_k; k++){
-    stroke(255);
+    stroke(100);
     strokeWeight(2);
     line(left_k+k*r_k,up_k,left_k+k*r_k,up_k+(n_height_k-2)*r_k);
     for (let k1 = 1; k1 < n_height_k-2; k1++){
@@ -596,6 +596,7 @@ function put_tf(){
     
     //下がブロックの場合
     if(k[1]-3 < 0 || floor1[k[1]-3][k[0]] != 0){
+      Timer = 0;
       if(wait_put <= 0) return true;
       k_tf = true;
       if(time_middle == 0 || move_x){
@@ -645,6 +646,7 @@ function hold_func(){
   }
   hold_list = Object.assign({}, Amino);
   Amino.x = Math.floor(width_n1/2)-1;
+  if(mino_list1[0] == 'I') Amino.x = Math.floor(width_n1/2);
   Amino.y = height_n1-3;
   state1 = 'first';
 }
@@ -695,8 +697,8 @@ function draw(){
   strokeWeight(3);
   textSize(40);
   fill(255,255,255)
-  text(String(delete_line_num),100,120)
-  //text(String(wait_put),100,120)
+  //text(String(delete_line_num),100,120)
+  text(String(Amino.k_x),100,120)
 
   //text(String(text1), 100, 80);
   
@@ -753,7 +755,7 @@ function draw(){
   mino_draw();
 
   //Time_end = new Date().getTime();
-  if(touch2.y[0] - touch1.y[0] >= 120 && hard_all_tf){
+  if(touch2.y[0] - touch1.y[0] >= 100 && hard_all_tf){
     if(new Date().getTime()-touch1.time <= 150){
       let hard_tf = true;
       let hard_y = 0;
@@ -793,7 +795,7 @@ function draw(){
   if(touch2.y[0]-touch1.y[0] >= 70){
     //console.log(touch1.y[0]);
     T_one *= 1/T_one_multi;
-  } else if(touch1.y[0]-touch2.y[0] >= 80){
+  } else if(new Date().getTime()-touch1.time <= 200 && touch1.y[0]-touch2.y[0] >= 50 && Math.abs((touch2.x[0]-touch1.x[0])/(touch2.y[0]-touch1.y[0])) <= 1){
     hold_func();
   }
   if(Timer > fr*T_one && put_tf()){
@@ -841,28 +843,46 @@ function touchMoved(){
   if((touch2.y[0]-touch1.y[0]) != 0){
     if(hard_all_tf && Math.abs((touch2.x[0]-touch1.x[0])/(touch2.y[0]-touch1.y[0])) >= 1){
 
+      k_x_base = Math.floor(side_v*width_n1*(touch2.x[0]-touch1.x[0])/width)
+      /*if(k_x_base < 0){
+        k_x_base += 1;
+        if(k_x_base > 0){
+          k_x_base = 0;
+        }
+      } else {
+        k_x_base -= 1;
+        if(k_x_base < 0){
+          k_x_base = 0
+        }
+      }*/
+      if(k_x_base > width_n1){
+        k_x_base = width_n1;
+      }
       
-      k_x_base = (
-        side_v*width_n1*(
-          Math.sign(
-            touch2.x[0]-touch1.x[0]
-          )*(
+      
+      /*k_x_base = (
+        Math.floor(
+          side_v*width_n1*(
             Math.sign(
-               Math.abs(
+              touch2.x[0]-touch1.x[0]
+            )*(
+              Math.sign(
                  Math.abs(
-                   touch2.x[0]-touch1.x[0]
-                 )-10
-               )
-            )+1
-          )/2*(
-            Math.abs(
+                   Math.abs(
+                     touch2.x[0]-touch1.x[0]
+                   )-10
+                 )
+              )+1
+            )/2*(
               Math.abs(
-                touch2.x[0]-touch1.x[0])
-              -10)
-            )
-          )/width
-        );
-
+                Math.abs(
+                  touch2.x[0]-touch1.x[0])
+                -10)
+              )
+            )/width
+          )
+        );*/
+      Amino.k_x = k_x_base;
       for (let k = 0; k < Amino.list.length; k ++){
         k_x = prex1+Amino.list_base[k][0] + Math.floor(k_x_base);
         k_y = Amino.list[k][1];
