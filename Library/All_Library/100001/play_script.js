@@ -50,7 +50,8 @@ let move_x = false;
 let hold_tf_first = true;
 let hard_all_tf = true;
 let on_time_base = 0.5;
-const side_v = 2.5;
+const side_v = 2.5*Number(window.prompt("横移動の感度", "1"));
+
 
 
 
