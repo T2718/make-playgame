@@ -697,8 +697,8 @@ function draw(){
   strokeWeight(3);
   textSize(40);
   fill(255,255,255)
-  //text(String(delete_line_num),100,120)
-  text(String(Amino.k_x),100,120)
+  text(String(delete_line_num),100,120)
+  //text(String(Amino.k_x),100,120)
 
   //text(String(text1), 100, 80);
   
