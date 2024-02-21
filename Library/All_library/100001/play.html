@@ -10,7 +10,7 @@
         margin:0px;
       }
     </style>
-    <script src="{{url_for('static',filename='Js/crafty-min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/craftyjs@0.9.0/src/crafty.min.js"></script>
     <title>PowCubist</title>
   </head>
   <body>
@@ -36,8 +36,9 @@
       var time = 0;
       var y_origin = h-150;
       var Y_o = h-150;
-      var user_name = {{name|tojson}};
-      var size = parseInt({{Size|tojson}});
+      //var user_name = {{name|tojson}};
+      //var size = parseInt({{Size|tojson}});
+      ver size = 50;
       //alert(w+':'+h)
       Crafty.multitouch(true);
       Crafty.init(w,h, document.getElementById('game'));
