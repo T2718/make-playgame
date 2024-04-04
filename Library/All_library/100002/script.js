@@ -1,3 +1,4 @@
+alert('v:1.01.01');
 const width = window.innerWidth;
 const height = window.innerHeight;
 const fr = 30;
