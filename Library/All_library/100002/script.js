@@ -376,7 +376,7 @@ function develop_text_draw(){
 //T-Spin,Tetris,PCを判定
 function ttp_func() {
   
-  if (tspin_rotate_tf == false) return;
+  
   
   let tspin_list_string_k = '';
   let delete_num_k = 0;
@@ -404,6 +404,8 @@ function ttp_func() {
     tech_text += 'Perfect Clear';
   }
 
+  if (tspin_rotate_tf == false) return;
+  
   //Tミノ周りの埋まってるブロックを探す
   if (Amino.x - 1 >= 0) {
     //左上
