@@ -1,4 +1,3 @@
-alert('v:1.01.01');
 const width = window.innerWidth;
 const height = window.innerHeight;
 const fr = 30;
@@ -387,14 +386,17 @@ function ttp_func() {
 
   //消すLine数を取得する
   for (let k = 0; k < Amino.list.length; k++) {
+    //重複防止&全て埋まっているか
     if (delete_index_k.indexOf(Amino.list[k][1]) == -1 && field_all[Amino.list[k][1]].indexOf(0) == -1) {
       delete_index_k.push(Amino.list[k][1])
       delete_num_k += 1;
-    } else {
-      pc_tf_k = false;
-    }
   }
-  
+  for(let k = 0; k < field_all.length; k++){
+    //消した行はスキップ
+    if(delete_index_k.indexOf(k) == -1) continue;
+    alert(field_all[k].indexOf(0));
+    if(field_all[k].indexOf(0) != 10) pc_tf_k = false;
+  }
   if (delete_num_k == 4){
     tech_text = 'Tetris';
   }
@@ -403,7 +405,9 @@ function ttp_func() {
       tech_text += "\n";
     }
     tech_text += 'Perfect Clear';
+    alert(pc_tf_k);
   }
+  if(tech_text != "") tech_timer = new Date().getTime();
 
   if (tspin_rotate_tf == false) return;
   
@@ -436,7 +440,7 @@ function ttp_func() {
 
 
 
-  tech_text = 'T-Spin ';
+  tech_text = 'T-Spin';
   
 
   if (delete_num_k == 1) {
