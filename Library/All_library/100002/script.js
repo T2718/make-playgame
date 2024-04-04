@@ -393,7 +393,7 @@ function ttp_func() {
       pc_tf_k = false;
     }
   }
-  try{
+  
   if (delete_num_k == 4){
     tech_text = 'Tetris';
   }
@@ -402,9 +402,6 @@ function ttp_func() {
       tech_text += "\n";
     }
     tech_text += 'Perfect Clear';
-  }
-  } catch(error_k){
-    alert(error_k);
   }
 
   //Tミノ周りの埋まってるブロックを探す
