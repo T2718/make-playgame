@@ -363,7 +363,7 @@ function tech_text_draw() {
 
 
 
-//かいはつようのText
+//開発用のText
 function develop_text_draw(){
   fill(255);
   textSize(20);
@@ -375,21 +375,34 @@ function develop_text_draw(){
 
 
 
-//T-Spinを判定
-function tspin_func() {
+//T-Spin,Tetris,PCを判定
+function ttp_func() {
   
   if (tspin_rotate_tf == false) return;
   
   let tspin_list_string_k = '';
   let delete_num_k = 0;
   let delete_index_k = [];
+  let pc_tf_k = true;
+  tech_text = "";
 
   //消すLine数を取得する
   for (let k = 0; k < Amino.list.length; k++) {
     if (delete_index_k.indexOf(Amino.list[k][1]) == -1 && field_all[Amino.list[k][1]].indexOf(0) == -1) {
       delete_index_k.push(Amino.list[k][1])
       delete_num_k += 1;
+    } else {
+      pc_tf_k = false;
     }
+  }
+  if (delete_num_k == 4){
+    tech_text = 'Tetris';
+  }
+  if (pc_tf_k == true){
+    if (tech_text != ""){
+      tech_text += "\n";
+    }
+    tech_text += 'Perfect Clear';
   }
 
   //Tミノ周りの埋まってるブロックを探す
