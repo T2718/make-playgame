@@ -397,13 +397,16 @@ function ttp_func() {
     if (delete_index_k.indexOf(Amino.list[k][1]) == -1 && field_all[Amino.list[k][1]].indexOf(0) == -1) {
       delete_index_k.push(Amino.list[k][1])
       delete_num_k += 1;
+    }
   }
+    
   for(let k = 0; k < field_all.length; k++){
     //消した行はスキップ
     if(delete_index_k.indexOf(k) == -1) continue;
     alert(field_all[k].indexOf(0));
     if(field_all[k].indexOf(0) != 10) pc_tf_k = false;
   }
+    
   if (delete_num_k == 4){
     tech_text = 'Tetris';
   }
