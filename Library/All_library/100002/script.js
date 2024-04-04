@@ -69,6 +69,8 @@ let tech_text = '';
 let tech_timer = 0;
 let develop_text = '';
 
+const ver = '1.01.01';
+
 
 
 
@@ -347,7 +349,12 @@ function put_countdown_func() {
 
 
 
-
+function version_draw(){
+  fill(255);
+  textSize(15);
+  textAlign(LEFT);
+  text(ver,50,50);
+}
 
 //Textを描画
 function tech_text_draw() {
@@ -852,6 +859,8 @@ function draw_main() {
 
   delete_line();
 
+  //versionを描画
+  version_draw();
   //Textを描画
   text_draw();
   //TechTextを描画
