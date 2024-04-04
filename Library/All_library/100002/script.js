@@ -372,7 +372,9 @@ function develop_text_draw(){
 }
 
 
-
+function tspin_func(){
+  return
+}
 
 
 //T-Spin,Tetris,PCを判定
