@@ -477,7 +477,7 @@ function put_func() {
   for (let k = 0; k < Amino.list.length; k++) {
     field_all[Amino.list[k][1]][Amino.list[k][0]] = Amino.color;
   }
-  tspin_func();
+  ttp_func();
   state = 'first';
 }
 
