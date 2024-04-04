@@ -372,10 +372,6 @@ function develop_text_draw(){
 }
 
 
-function tspin_func(){
-  return
-}
-
 
 //T-Spin,Tetris,PCを判定
 function ttp_func() {
@@ -397,6 +393,7 @@ function ttp_func() {
       pc_tf_k = false;
     }
   }
+  try{
   if (delete_num_k == 4){
     tech_text = 'Tetris';
   }
@@ -405,6 +402,9 @@ function ttp_func() {
       tech_text += "\n";
     }
     tech_text += 'Perfect Clear';
+  }
+  } catch(error_k){
+    alert(error_k);
   }
 
   //Tミノ周りの埋まってるブロックを探す
@@ -458,7 +458,7 @@ function ttp_func() {
     } else if (Amino.dir == 'W') {
       if (tspin_list_string_k.indexOf('[-1,-1]') == -1 || tspin_list_string_k.indexOf('[1,-1]') == -1) tech_text += 'Mini';
     } else {
-      console.error('tspin_func:dirが存在しません。');
+      console.error('ttp_func:dirが存在しません。');
     }
   }
   
