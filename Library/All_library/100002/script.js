@@ -49,6 +49,7 @@ let touch2 = [];
 let touch1_pre = [];
 let touch_while = [];
 let touch_fin_time = 0;
+const sens = 0.8;
 
 //Hold
 let hold_tf = false;
@@ -795,7 +796,7 @@ function move_finger_func() {
   if (move_tf == false) return;
   if (touch_while.length != 0) {
     if (touch_fin_time != 0) {
-      if (touch_fin_time <= 150 && touch_while[0].y - touch1_pre[0].y >= 120) {
+      if (touch_fin_time <= 150 && touch_while[0].y - touch1_pre[0].y >= 120*sens) {
         hard_func();
         return;
       }
@@ -806,10 +807,10 @@ function move_finger_func() {
   if (touch2.length == 0) return;
 
 
-  if (new Date().getTime() - touch1_time <= 200 && touch1_pre[0].y - touch2[0].y >= 50 && Math.abs((touch2[0].x - touch1_pre[0].x) / (touch2[0].y - touch1_pre[0].y)) <= 1) {
+  if (new Date().getTime() - touch1_time <= 200 && touch1_pre[0].y - touch2[0].y >= 50*sens && Math.abs((touch2[0].x - touch1_pre[0].x) / (touch2[0].y - touch1_pre[0].y)) <= 1) {
     hold_func();
     return;
-  } else if (touch2[0].y - touch1_pre[0].y >= 70) {
+  } else if (touch2[0].y - touch1_pre[0].y >= 70*sens) {
     one_drop_time = one_drop_time_base / multiple;
     return;
   }
