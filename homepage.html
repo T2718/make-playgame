@@ -57,8 +57,8 @@
     <script>
       function LogOut(){
         alert('Page遷移します。');
-        localStorage.setItem('Now','./Library/library-play')
-        localStorage.setItem('name') = null
+        localStorage.setItem('Now','./Library/library-play');
+        localStorage.removeItem('name');
         window.location.href = "./login";
       }
     </script>
