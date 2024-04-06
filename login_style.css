@@ -1,5 +1,10 @@
-html,body {
-  background: skyblue;
+html {
+  width: 109%;
+  height: 100%;
+}
+body {
+  background-image: url("/make-playgame/background_image.png");
+  background-size: cover;
   width: 100%;
   height: 100%;
 }
