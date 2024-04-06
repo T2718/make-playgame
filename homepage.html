@@ -56,12 +56,13 @@
     <!-- End Google Tag Manager (noscript) -->
     <script>
       function LogOut(){
+        alert('Page遷移します。');
         localStorage.setItem('Now','./Library/library-play')
-        localStorage.getItem('name') = null
+        localStorage.setItem('name') = null
         window.location.href = "./login";
       }
     </script>
-    <button type="button" onclick="LogOut();">LogOut</button>
+    <div onclick="LogOut();">Click</div>
     <h1>
       [Make&PlayGame]
     </h1>
