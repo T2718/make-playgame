@@ -162,9 +162,11 @@ window.addEventListener('DOMContentLoaded', () => {
                          [[4240,-1000],710,10],
                          [[4240,-2490],10,1490]];
 
-  //Goal
+  //Lap
   let lap = -1;
   let lap_can = true;
+  let lap_list = [];
+  let last_lap_time = Date.now();
 
 
 
@@ -172,7 +174,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let txt = "";
   const text = document.getElementById('text');
   function txt_draw(txt_k) {
-    txt = txt_k
+    txt = String(txt_k)
     text.innerHTML = txt;
   }
 
@@ -717,15 +719,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     //周回判定
-    if(4950<=Cubist.position.x<=5650 && -1000<=Cubist.position.z<=-950){
+    if(4950<=Cubist.position.x && Cubist.position.x<=5650 && -1000<=Cubist.position.z && Cubist.position.z<=-950){
       lap_can = true;
-
     }
-    if(lap_can && -500<=Cubist.position.x<=500 && 0<=Cubist.position.z<=5){
+    if(lap_can && -500<=Cubist.position.x && Cubist.position.x<=500 && 0<=Cubist.position.z && Cubist.position.z<=20){
       lap += 1;
       lap_can = false;
+      lap_list.push((Date.now()-last_lap_time)/1000);
+      last_lap_time = Date.now();
     }
-    txt_draw(String(lap_can)+String(lap));
 
 
 
@@ -738,11 +740,20 @@ window.addEventListener('DOMContentLoaded', () => {
       resize_tf = true;
     }
 
+    lap_ave = lap_list.reduce(function(pre_k,k){
+      return pre_k+k;
+    })/lap_list.length;
     //座標をText表示(41行目参照のこと)
     //txt_draw('('+String(new_round(Cubist_pos.x,3))+','+String(new_round(Cubist_pos.z,3))+')');
     now_time = Date.now();
     Timedelta = Math.floor((now_time - Start_time) / 10) / 100;
-    //txt_draw(String(Timedelta));
+    if(lap >= 1){
+      txt_draw(String(Timedelta)+'<br>Lap:'+String(lap)+
+             'LapTime:'+String(new_round(Date.now()/1000-last_lap_time,2))+
+             'LapAve:'+String(lap_ave));
+    } else {
+      txt_draw(String(Timedelta)+'<br>Lap:'+String(lap))
+    }
 
 
     //Itemを表示
