@@ -163,8 +163,8 @@ window.addEventListener('DOMContentLoaded', () => {
                          [[4240,-2490],10,1490]];
 
   //Lap
-  let lap = -1;
-  let lap_can = true;
+  let lap = 0;
+  let lap_can = false;
   let lap_list = [];
   let last_lap_time = Date.now();
 
