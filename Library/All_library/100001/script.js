@@ -740,9 +740,13 @@ window.addEventListener('DOMContentLoaded', () => {
       resize_tf = true;
     }
 
-    lap_ave = lap_list.reduce(function(pre_k,k){
-      return pre_k+k;
-    })/lap;
+    if(lap != 0){
+      lap_ave = lap_list.reduce(function(pre_k,k){
+        return pre_k+k;
+      })/lap;
+    } else {
+      lap_ave = 0;
+    }
     //座標をText表示(41行目参照のこと)
     //txt_draw('('+String(new_round(Cubist_pos.x,3))+','+String(new_round(Cubist_pos.z,3))+')');
     now_time = Date.now();
