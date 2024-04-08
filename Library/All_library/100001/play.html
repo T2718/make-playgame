@@ -8,6 +8,15 @@
   <style>
     * {
       font-size: 16px;
+      touch-action:none;
+      -webkit-touch-callout:none;
+      -webkit-user-select:none;
+      overflow:hidden;
+      pointer-events: none;
+      padding:0;
+      width:100%;
+      height:100%;
+      margin:0;
     }
     html,body,canvas{
       touch-action:none;
@@ -35,6 +44,17 @@
       z-index:99;
       
     }
+    .item {
+      touch-action:none;
+      -webkit-touch-callout:none;
+      -webkit-user-select:none;
+      pointer-events: none;
+      padding:0;
+      margin:0;
+      display: inline;
+      position: fixed;
+      overflow-y: hidden;
+    }
     #text {
       touch-action:none;
       -webkit-touch-callout:none;
@@ -58,6 +78,24 @@
 <body>
   <body>
     <div id="text">Text</div>
+    <div class="item" id="item_box" style="
+      width: 60px;
+      height: 60px;
+      top: 40px;
+      left: 120px;
+      background-color: rgba(255,255,255,0.4);
+      border-radius: 5px;
+      index-z: 99;
+      "></div>
+    <div class="item" id="item" style="
+      width: 30px;
+      height: 30px;
+      top: 55px;
+      left: 135px;
+      background-color: rgba(0,0,0,0);
+      border-radius: 15px;
+      index-z: 100;
+      "></div>
     <div class="button" id="stick" style="
       width: 60px;
       height: 60px;
@@ -87,6 +125,14 @@
       bottom: 120px;
       right: 150px;
       background-color: rgba(0,0,255,0.4);
+      "></div>
+    <div class="button" id="item_button" style="
+      width: 60px;
+      height: 60px;
+      bottom: 400px;
+      left: 150px;
+      background-color: rgba(0,0,0,0);
+      border-radius: 30px;
       "></div>
     <canvas id="myCanvas"></canvas>
   </body>
