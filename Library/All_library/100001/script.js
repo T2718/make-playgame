@@ -742,15 +742,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
     lap_ave = lap_list.reduce(function(pre_k,k){
       return pre_k+k;
-    })/lap_list.length;
+    })/lap;
     //座標をText表示(41行目参照のこと)
     //txt_draw('('+String(new_round(Cubist_pos.x,3))+','+String(new_round(Cubist_pos.z,3))+')');
     now_time = Date.now();
     Timedelta = Math.floor((now_time - Start_time) / 10) / 100;
     if(lap >= 1){
       txt_draw(String(Timedelta)+'<br>Lap:'+String(lap)+
-             'LapTime:'+String(new_round(Date.now()/1000-last_lap_time,2))+
-             'LapAve:'+String(lap_ave));
+             ' LapTime:'+String(last_lap.time)+
+             ' Time:'+String(Math.floor(Date.now()/100-10*last_lap_time)/10)+
+             ' LapAve:'+String(lap_ave));
     } else {
       txt_draw(String(Timedelta)+'<br>Lap:'+String(lap))
     }
