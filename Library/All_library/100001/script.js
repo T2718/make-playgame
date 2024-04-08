@@ -127,7 +127,7 @@ window.addEventListener('DOMContentLoaded', () => {
   [[-450, -2600], 1800, 500],
   [[-950, -2600], 500, 1700],
   [[-450, -1400], 700, 500]];
-  
+
   //Wall
   const wall_h = 50;
   //外回り
@@ -167,6 +167,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let lap_can = false;
   let lap_list = [];
   let last_lap_time = Date.now();
+  let lap_time = 0;
 
 
 
@@ -341,7 +342,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let W_k = Wall_list_inside[k];
     Wall_Make(W_k[0][0], W_k[0][1], W_k[1], W_k[2]);
   }
-  
+
 
 
 
@@ -726,6 +727,7 @@ window.addEventListener('DOMContentLoaded', () => {
       lap += 1;
       lap_can = false;
       lap_list.push((Date.now()-last_lap_time)/1000);
+      lap_time = (Date.now()-last_lap_time)/1000;
       last_lap_time = Date.now();
     }
 
@@ -753,8 +755,8 @@ window.addEventListener('DOMContentLoaded', () => {
     Timedelta = Math.floor((now_time - Start_time) / 10) / 100;
     if(lap >= 1){
       txt_draw(String(Timedelta)+'<br>Lap:'+String(lap)+
-             ' LapTime:'+String(last_lap_time)+
-             ' Time:'+String(Math.floor(Date.now()/100-10*last_lap_time)/10)+
+             ' LapTime:'+String(lap_time)+
+             ' Time:'+String(Math.floor((Date.now()-last_lap_time)/100)/10)+
              ' LapAve:'+String(lap_ave));
     } else {
       txt_draw(String(Timedelta)+'<br>Lap:'+String(lap))
