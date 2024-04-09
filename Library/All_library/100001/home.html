@@ -35,10 +35,10 @@
     sizeSlider.addEventListener('input', inputChange);
     let msg = document.getElementById('msg');
     let first_size = localStorage.getItem("CarRace:r_angle_button");
-    if(first_size != null){
+    if(first_size == null){
       msg.innerText = 'ボタンサイズは120です';
     } else {
-      mas.innerText = 'ボタンサイズは'+first_size+'です';
+      msg.innerText = 'ボタンサイズは'+first_size+'です';
       sizeSlider.value = first_size;
     }
     function Button_R(){
