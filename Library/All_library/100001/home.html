@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>CarRace_Home:Make&PlayGame:Library</title>
-    <script>
-      localStorage.setItem("CarRace:r_angle_button","128");
-    </script>
+    
   </head>
   <body>
     <h1>CarRace</h1>
@@ -34,7 +32,7 @@
       msg.innerText = 'ボタンサイズは' + sizeSlider.value + 'です';
     }
     let sizeSlider = document.getElementById('sizeSlider');
-    volumeSlider.addEventListener('input', inputChange);
+    sizeSlider.addEventListener('input', inputChange);
     let msg = document.getElementById('msg');
     let first_size = localStorage.getItem("CarRace:r_angle_button");
     if(first_size != null){
