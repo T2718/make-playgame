@@ -9,6 +9,25 @@
   </head>
   <body>
     <h1>CarRace</h1>
+    <div>
+    <label>ボタンサイズ:<input type="range" min="50" max "250" step="10" value="120" id="volumeSlider"></label>
+    </div>
+
+    <p id="msg">ボタンサイズは120です</p>
+
+    <script>
+    function inputChange(event){
+      msg.innerText = 'ボタンサイズは' + volumeSlider.value + 'です';
+    }
+    let volumeSlider = document.getElementById('volumeSlider');
+    volumeSlider.addEventListener('input', inputChange);
+    let msg = document.getElementById('msg');
+    function Button_R(){
+      localStorage.setItem('volumeSlider.value');
+    }
+    </script>
+    <input type="button" onclick="Button_R();" value="決定">
+    
     
     <a href="play1">1</a>
   </body>
