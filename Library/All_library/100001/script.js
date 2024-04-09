@@ -44,6 +44,8 @@ window.addEventListener('DOMContentLoaded', () => {
   max_v = max_v_origin * cc_multi;
   max_minus_v = max_minus_v_origin * cc_multi;
   max_v_origin = max_v;
+  a = a * cc_multi;
+  minus_a = minus * cc_multi;
 
 
   let x = null;
