@@ -23,21 +23,29 @@
       &emsp;&emsp;右側の赤色ボタンが加速、青色ボタンが減速&amp;バックです。
     </p>
     <div>
-    <label>ボタンサイズ:<input type="range" min="50" max="250" step="10" value="120" id="volumeSlider"></label>
+    <label>ボタンサイズ:<input type="range" min="50" max="250" step="10" value="120" id="sizeSlider"></label>
     </div>
 
     <p id="msg">ボタンサイズは120です</p>
 
     <script>
+    
     function inputChange(event){
-      msg.innerText = 'ボタンサイズは' + volumeSlider.value + 'です';
+      msg.innerText = 'ボタンサイズは' + sizeSlider.value + 'です';
     }
-    let volumeSlider = document.getElementById('volumeSlider');
+    let sizeSlider = document.getElementById('sizeSlider');
     volumeSlider.addEventListener('input', inputChange);
     let msg = document.getElementById('msg');
+    let first_size = localStorage.getItem("CarRace:r_angle_button");
+    if(first_size != null){
+      msg.innerText = 'ボタンサイズは120です';
+    } else {
+      mas.innerText = 'ボタンサイズは'+first_size+'です';
+      sizeSlider.value = first_size;
+    }
     function Button_R(){
-      alert('ボタンサイズを'+volumeSlider.value+'にしました');
-      localStorage.setItem("CarRace:r_angle_button",volumeSlider.value);
+      alert('ボタンサイズを'+sizeSlider.value+'にしました');
+      localStorage.setItem("CarRace:r_angle_button",sizeSlider.value);
     }
     </script>
     <input type="button" onclick="Button_R();" value="決定">
