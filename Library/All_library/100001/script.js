@@ -34,6 +34,9 @@ window.addEventListener('DOMContentLoaded', () => {
     cc_multi = 0.9;
   } else if (cc == 50) {
     cc_multi = 0.8;
+  } else if (cc == 10000) {
+    alert('隠し機能');
+    cc_multi = 100;
   } else {
     cc_multi = 1;
   }
