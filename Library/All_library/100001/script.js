@@ -66,7 +66,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let Angle_max_v_main = 0.04;
   let Angle_max_v_origin = 0.04;
   let Angle = 0;
-  const r_angle_button = 120;
+  let r_angle_button = Number(localStorage.getItem("CarRace:r_angle_button"));
   let Angle_tf = false;
   let Angle_sign = 1;
   let angle_margin = 20;
@@ -214,7 +214,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let angle_button_x = 180;
   let angle_button_y = height - 190;
 
-  let isSmartPhone = false;
+  /*let isSmartPhone = false;
 
   if (window.matchMedia && window.matchMedia('(max-device-width: 640px)').matches) {
     isSmartPhone = true;
@@ -237,7 +237,7 @@ window.addEventListener('DOMContentLoaded', () => {
     angle_button_y = height - 190;
 
     r_angle_button = 120;
-  }
+  }*/
 
   //Banker
   const banker_mult = 3;
