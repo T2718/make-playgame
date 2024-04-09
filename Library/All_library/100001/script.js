@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', () => {
   max_minus_v = max_minus_v_origin * cc_multi;
   max_v_origin = max_v;
   a = a * cc_multi;
-  minus_a = minus * cc_multi;
+  minus_a = minus_a * cc_multi;
   Angle_max_v = Angle_max_v * cc_multi;
   Angle_max_v_origin = Angle_max_v_origin * cc_multi;
 
