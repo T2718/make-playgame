@@ -23,7 +23,8 @@
     volumeSlider.addEventListener('input', inputChange);
     let msg = document.getElementById('msg');
     function Button_R(){
-      localStorage.setItem('volumeSlider.value');
+      alert('ボタンサイズを'+volumeSlider.value+'にしました');
+      localStorage.setItem("CarRace:r_angle_button",volumeSlider.value);
     }
     </script>
     <input type="button" onclick="Button_R();" value="決定">
