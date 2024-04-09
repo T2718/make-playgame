@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', () => {
   document.addEventListener("gesturestart", (e) => {
     e.preventDefault();
   });
+
   //Windowサイズ
   const width = window.innerWidth;
   const height = window.innerHeight;
@@ -150,7 +151,7 @@ window.addEventListener('DOMContentLoaded', () => {
   [[-1210,-2810],10,2160],
   [[-1200,-650],690,10]];
   //内回り
-  let Wall_list_inside = [[[500,-1650],10,2300],
+  let Wall_list_inside = [[[500,-1700],10,2350],
                          [[510,640],1290,10],
                          [[1800,640],10,1000],
                          [[1800,1640],690,10],
@@ -160,7 +161,10 @@ window.addEventListener('DOMContentLoaded', () => {
                          [[3850,-510],1100,10],
                          [[4940,-1000],10,490],
                          [[4240,-1000],710,10],
-                         [[4240,-2490],10,1490]];
+                         [[4240,-2490],10,1490],
+                         [[3250,-2500],1000,10],
+                         [[3250,-2490],10,950],
+                         [[510,-1550],2740,10]];
 
   //Lap
   let lap = 0;
