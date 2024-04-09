@@ -8,6 +8,18 @@ window.addEventListener('DOMContentLoaded', () => {
   const width = window.innerWidth;
   const height = window.innerHeight;
 
+  //Angle
+  let Angle_v = 0;
+  let Angle_max_v = 0;
+  const Angle_a = 0.15;
+  const Angle_minus_a = 0.12;
+  let Angle_max_v_main = 0.04;
+  let Angle_max_v_origin = 0.04;
+  let Angle = 0;
+  let r_angle_button = Number(localStorage.getItem("CarRace:r_angle_button"));
+  let Angle_tf = false;
+  let Angle_sign = 1;
+  let angle_margin = 20;
 
   //速度(最初の方に実行して)
   let cc = 150;
@@ -46,6 +58,8 @@ window.addEventListener('DOMContentLoaded', () => {
   max_v_origin = max_v;
   a = a * cc_multi;
   minus_a = minus * cc_multi;
+  Angle_max_v = Angle_max_v * cc_multi;
+  Angle_max_v_origin = Angle_max_v_origin * cc_multi;
 
 
   let x = null;
@@ -63,18 +77,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let tf_k = false;
 
 
-  //Angle
-  let Angle_v = 0;
-  let Angle_max_v = 0;
-  const Angle_a = 0.15;
-  const Angle_minus_a = 0.12;
-  let Angle_max_v_main = 0.04;
-  let Angle_max_v_origin = 0.04;
-  let Angle = 0;
-  let r_angle_button = Number(localStorage.getItem("CarRace:r_angle_button"));
-  let Angle_tf = false;
-  let Angle_sign = 1;
-  let angle_margin = 20;
+
 
   //Road
   let OnRoad_list = [];
