@@ -26,6 +26,8 @@ window.addEventListener('DOMContentLoaded', () => {
   ang_style.width = String(2*r_angle_button)+"px";
   ang_style.height = String(2*r_angle_button)+"px";
   ang_style.borderRadius = String(r_angle_button)+"px";
+
+  let cent_style = document.getElementById("center_stick").style;
   
   let Angle_tf = false;
   let Angle_sign = 1;
@@ -581,6 +583,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (touch_num >= 1 && (Math.pow(x[0] - angle_button_x, 2) + Math.pow(y[0] - angle_button_y, 2)) < r_angle_button * r_angle_button) {
           if(Math.abs(x[0] - angle_button_x) >= angle_margin){
+            cent_style.bottom = 190+x[0]-angle_button_x;
+            cent_style.left = 200+y[0]-angle_button_y;
             Angle_sign = Math.sign(angle_button_x - x[0]);
             Angle_max_v = Math.abs(Angle_max_v_main * (angle_button_x - x[0]) / r_angle_button);
             Angle_tf = true;
@@ -588,6 +592,8 @@ window.addEventListener('DOMContentLoaded', () => {
         } else if (touch_num >= 2) {
           if ((Math.pow(x[1] - angle_button_x, 2) + Math.pow(y[1] - angle_button_y, 2)) < r_angle_button * r_angle_button) {
             if(Math.abs(x[1] - angle_button_x) >= angle_margin){
+              cent_style.bottom = 190+x[1]-angle_button_x;
+              cent_style.left = 200+y[1]-angle_button_y;
               Angle_sign = Math.sign(angle_button_x - x[1]);
               Angle_max_v = Math.abs(Angle_max_v_main * (angle_button_x - x[1]) / r_angle_button);
               Angle_tf = true;
