@@ -26,6 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
   ang_style.width = String(2*r_angle_button)+"px";
   ang_style.height = String(2*r_angle_button)+"px";
   ang_style.borderRadius = String(r_angle_button)+"px";
+  
   let Angle_tf = false;
   let Angle_sign = 1;
   let angle_margin = 20;
