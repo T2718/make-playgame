@@ -234,8 +234,8 @@ window.addEventListener('DOMContentLoaded', () => {
   let angle_stick = document.getElementById('angle_stick');
   /*angle_stick.style.borderRadius = String(r_angle_button);
   angle_stick.style.height = '*/
-  let angle_button_x = 180;
-  let angle_button_y = height - 190;
+  let angle_button_x = 170;
+  let angle_button_y = height - 160;
 
   /*let isSmartPhone = false;
 
