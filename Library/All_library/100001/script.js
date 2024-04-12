@@ -793,7 +793,7 @@ window.addEventListener('DOMContentLoaded', () => {
       txt_draw(String(Timedelta)+'<br>Lap:'+String(lap)+
              ' LapTime:'+String(lap_time)+
              ' Time:'+String(Math.floor((Date.now()-last_lap_time)/100)/10)+
-             ' LapAve:'+String(lap_ave));
+             ' LapAve:'+String(Math.floor(100*lap_ave)/100));
     } else {
       txt_draw(String(Timedelta)+'<br>Lap:'+String(lap))
     }
