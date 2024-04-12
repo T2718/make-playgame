@@ -3,6 +3,9 @@ window.addEventListener('DOMContentLoaded', () => {
   document.addEventListener("gesturestart", (e) => {
     e.preventDefault();
   });
+  document.addEventListener("gesturechange",(e) => {
+    e.preventDefault();
+  });
 
   //Windowサイズ
   const width = window.innerWidth;
@@ -17,6 +20,12 @@ window.addEventListener('DOMContentLoaded', () => {
   let Angle_max_v_origin = 0.04;
   let Angle = 0;
   let r_angle_button = Number(localStorage.getItem("CarRace:r_angle_button"));
+  const ang_style = document.getElementById("angle_stick").style;
+  ang_style.bottom = String(190-r_angle_button)+"px";
+  ang_style.left = String(180-r_angle_button)+"px";
+  ang_style.width = String(2*r_angle_button)+"px";
+  ang_style.height = String(2*r_angle_button)+"px";
+  ang_style.borderRadius = String(r_angle_button)+"px";
   let Angle_tf = false;
   let Angle_sign = 1;
   let angle_margin = 20;
