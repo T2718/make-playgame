@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script>
+      localStorage.setItem('Now','./Makegame/make.html')
+      if(localStorage.getItem('name') == null) window.location.href = "../login.html";
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+    <!--<style src="./make_style.css"></style>-->
+    <link href="./make_style.css" rel="stylesheet" type="text/css">
+    <title>Make&PlayGame</title>
+  </head>
+  <body>
+    <!--Hello<br>this is <b>makegame</b> page!-->
+    <script src="./make_script.js"></script>
+  </body>
+</html>
