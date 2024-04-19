@@ -282,7 +282,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
   let frame = 0;
-
+  let key = [];
 
 
 
@@ -457,6 +457,47 @@ window.addEventListener('DOMContentLoaded', () => {
   } catch (error_k) {
     alert(error_k);
   }
+  //KeyCodeイベント
+  try{
+    window.addEventListener('keydown', (event_k) => {
+      if (event_k.key == 'w') {
+        key.push('w')
+      }
+      if (event_k.key == 's') {
+        key.push('s')
+      })
+      if (event_k.key == 'a')
+        key.push('a')
+      }
+      if (event_k.key == 'd')
+        key.push('d')
+      }
+    });
+    window.addEventListener('keyup', (event_k) => {
+      if (event_k.key == 'w') {
+        key = key.filter(function(key) {
+  　　　　　return key != 'w';
+  　　　});
+      }
+      if (event_k.key == 's') {
+        key = key.filter(function(key) {
+  　　　　　return key != 's';
+  　　　});
+      })
+      if (event_k.key == 'a')
+        key = key.filter(function(key) {
+  　　　　　return key != 'a';
+  　　　});
+      }
+      if (event_k.key == 'd')
+        key = key.filter(function(key) {
+  　　　　　return key != 'd';
+  　　　});
+      }
+    });
+  } catch (error_k) {
+
+  }
 
 
   let pp_x = 0;
@@ -552,7 +593,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
       //加速
-      if (acc_butt_x - acc_bra_l < x[0] && x[0] < acc_butt_x && acc_butt_y - acc_bra_l < y[0] && y[0] < acc_butt_y) {
+      if (('w' in key) || (acc_butt_x - acc_bra_l < x[0] && x[0] < acc_butt_x && acc_butt_y - acc_bra_l < y[0] && y[0] < acc_butt_y)) {
         v += a * delta_time;
         if (v > max_v) v = max_v;
         acc_bra_tf = true;
@@ -565,7 +606,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
 
       //減速
-      if (bra_butt_x - acc_bra_l < x[0] && x[0] < bra_butt_x && bra_butt_y - acc_bra_l < y[0] && y[0] < bra_butt_y) {
+      if (('s' in key) || (bra_butt_x - acc_bra_l < x[0] && x[0] < bra_butt_x && bra_butt_y - acc_bra_l < y[0] && y[0] < bra_butt_y)) {
         v -= a * delta_time;
         if (v < -max_minus_v) v = -max_minus_v;
         acc_bra_tf = true;
@@ -578,7 +619,21 @@ window.addEventListener('DOMContentLoaded', () => {
       }
       //Angleを変更
       //方向ボタンから半径r_angle_button以内の時実行
-
+      if('a' in key || 'd' in key) {
+        if('a' in key){
+          cent_style.left = String(170-r_angle_button)+"px");
+          //cent_style.bottom = String(160)+"px";
+          Angle_sign = -1;
+          Angle_max_v = Math.abs(Angle_max_v_main * (170-r_angle_button) / r_angle_button);
+          Angle_tf = true;
+        } else if('d' in key){
+          cent_style.left = String(170+r_angle_button)+"px");
+          //cent_style.bottom = String(160)+"px";
+          Angle_sign = 1;
+          Angle_max_v = Math.abs(Angle_max_v_main * (170-r_angle_button) / r_angle_button);
+          Angle_tf = true;
+        }
+      }
       if (v != 0 || acc_bra_tf) {
 
         if (touch_num >= 1 && (Math.pow(x[0] - angle_button_x, 2) + Math.pow(y[0] - angle_button_y, 2)) < r_angle_button * r_angle_button) {
