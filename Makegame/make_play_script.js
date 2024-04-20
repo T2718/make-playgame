@@ -26,7 +26,7 @@ function draw(){
   for (let k = 0; k < n_h; k++){
     for (let k0 = 0; k0 < n_w; k0++){
       fill(255-100*l[k][k0]);
-      rect(k*r,k0*r,r,r);
+      rect(k0*r,k*r,r,r);
     }
   }
 }
