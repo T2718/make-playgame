@@ -104,7 +104,7 @@ function touchStarted(){
   if(25 <= t[0].x && t[0].x <= 125 && h+25 <= t[0].y && t[0].y <= h+75){
     const json_k = serializedArray = JSON.stringify(l);
     localStorage.setItem('MakeGame:BlockList',json_k);
-    window.location.href = "./play.html"
+    window.location.href = "./make_play.html"
   }
   touch_func();
 }
