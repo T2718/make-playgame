@@ -9,6 +9,5 @@ body {
   height: 100%;
 }
 .ad {
-  position:sticky;
-  bottom: 0px;
+  margin: 100px;
 }
