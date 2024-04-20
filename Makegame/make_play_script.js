@@ -5,7 +5,7 @@ let l = [];
 
 alert('play');
 
-l = localStorage.getItem('MakeGame:BlockList');
+l = JSON.parse(localStorage.getItem('MakeGame:BlockList'))
 
 const n_h = l.length;
 const n_w = l[0].length;
