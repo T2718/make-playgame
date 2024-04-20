@@ -13,6 +13,7 @@ const r = 30;
 
 alert(l.length);
 alert(l[0]);
+alert('var:1');
 
 function setup(){
   createCanvas(w,h)
