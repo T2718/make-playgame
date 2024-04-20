@@ -18,3 +18,7 @@ canvas{
   -webkit-touch-callout:none;
   -webkit-user-select:none;
 }
+
+.main {
+  top: 0px;
+}
