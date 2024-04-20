@@ -1,8 +1,8 @@
-let canvas_id = document.getElementById('canvas');
+/*let canvas_id = document.getElementById('canvas');
 
 canvas_id.addEventListener("gesturestart", (e) => {
   e.preventDefault();
-});
+});*/
 
 
 const w_all = window.innerWidth;
