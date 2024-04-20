@@ -22,6 +22,8 @@ let l = [];
 let t_num = 0;
 
 main_id.style.top = String(h+100)+"px";
+main_id.style.fontSize = "30px";
+alert(main_id.style.top)
 
 for (let k = 0; k < n_h; k++){
   l.push([]);
