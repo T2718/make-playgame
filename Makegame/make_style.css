@@ -15,9 +15,9 @@ canvas {
   position: fixed;
   left: 0px;
   top: 0px;
-  overflow: hidden;
-  /*-webkit-touch-callout:none;
-  -webkit-user-select:none;*/
+  /*overflow: hidden;*/
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
   /*touch-action: none;*/
 }
 
