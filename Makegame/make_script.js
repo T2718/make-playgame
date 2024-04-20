@@ -7,7 +7,6 @@ canvas_id.addEventListener("gesturestart", (e) => {
 let main_id = document.getElementById('main');
 
 
-
 const w_all = window.innerWidth;
 const h_all = window.innerHeight;
 
