@@ -1,7 +1,6 @@
 const w = window.innerWidth;
 const h = window.innerHeight;
 
-
 l = localStorage.getItem('MakeGame:BlockList')
 
 alert(l.length);
