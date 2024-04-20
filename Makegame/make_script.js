@@ -21,7 +21,7 @@ let t_m = [];
 let l = [];
 let t_num = 0;
 
-main_id.style.top = h+100;
+main_id.style.top = String(h+100)+"px";
 
 for (let k = 0; k < n_h; k++){
   l.push([]);
