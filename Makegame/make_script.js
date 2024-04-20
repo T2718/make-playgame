@@ -31,6 +31,7 @@ function setup() {
 }
 
 function draw_back(){
+  background(255);
   noStroke();
   fill(220);
   rect(0,h,w,100);
