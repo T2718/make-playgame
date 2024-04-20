@@ -81,7 +81,6 @@ function draw() {
   //console.log(t[0]);
   //background(220);
   clear();
-  background(255);
   strokeWeight(1);
   stroke(0);
   fill(255)
