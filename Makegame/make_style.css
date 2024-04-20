@@ -10,7 +10,7 @@ html, body {
   background-size: cover;
 }
 
-canvas{
+#canvas{
   margin: 0;
   position: fixed;
   left: 0px;
