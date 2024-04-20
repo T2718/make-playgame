@@ -17,9 +17,9 @@
       window.location.href = href;
     }
   </script>
-  <link rel="icon" href="/make-playgame/favicon.ico">
-  <link rel="shortcut icon" href="/make-playgame/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/make-playgame/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
     <br><b>他の人のゲームをPlay</b>することができます。
     <br>
   </p>
-  <label>名前:<input id="name" type="text" placeholder="なまえを入力してください。" value="" /></label>
+  <label>名前:<input id="name" type="text" placeholder="名前を入力してください。" value="" /></label>
   <input type="button" value="Check" id="check">
 
   <script>
@@ -40,7 +40,7 @@
     button.addEventListener("click",()=>{
       localStorage.setItem('name',name.value);
       if(localStorage.getItem('now') == null){
-        href = "./homepage.html";
+        href = "./homepage";
       } else {
         href = localStorage.getItem('now');
       }
