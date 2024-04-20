@@ -4,7 +4,7 @@ document.addEventListener("gesturestart", (e) => {
   alert('ges');
   e.preventDefault();
 });
-document.addEventListener("scroll", (e) => {
+window.addEventListener("scroll", (e) => {
   alert('scr');
   e.preventDefault();
 });
