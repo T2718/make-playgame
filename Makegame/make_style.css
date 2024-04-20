@@ -1,33 +1,3 @@
-/*html {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  overflow: hidden;
-  background: skyblue;
-}
-body {
-  display: grid;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  grid-template-columns: 100%;
-  grid-template-rows: 80% 20%;
-  padding: 0;
-  overflow: hidden;
-}
-#code_txt {
-  width: 100%;
-  height: 100%;
-  font-size: 6mm;
-}
-#send_code_input {
-  width: 100%;
-  height: 100%;
-  font-size: 15mm;
-}
-*/
-
 html,body,canvas{
   margin: 0;
   width: 100%;
