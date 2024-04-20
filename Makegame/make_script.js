@@ -1,11 +1,9 @@
 let canvas_id = document.getElementById('canvas');
 
 document.addEventListener("gesturestart", (e) => {
-  alert('ges');
   e.preventDefault();
 });
 window.addEventListener("scroll", (e) => {
-  alert('scr');
   e.preventDefault();
 });
 
