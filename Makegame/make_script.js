@@ -4,6 +4,9 @@ canvas_id.addEventListener("gesturestart", (e) => {
   e.preventDefault();
 });*/
 
+let main_id = document.getElementById('main');
+
+
 
 const w_all = window.innerWidth;
 const h_all = window.innerHeight;
@@ -18,6 +21,7 @@ let t_m = [];
 let l = [];
 let t_num = 0;
 
+main_id.style.top = h+100;
 
 for (let k = 0; k < n_h; k++){
   l.push([]);
