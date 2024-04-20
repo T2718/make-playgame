@@ -1,10 +1,11 @@
 const w = window.innerWidth;
 const h = window.innerHeight;
 
-alert('Play')
 
+l = localStorage.getItem('MakeGame:BlockList')
 
-console.log(localStorage.getItem('MakeGame:BlockList'))
+alert(l.length);
+alert(l[0]);
 
 function setup(){
   createCanvas(w,h)
