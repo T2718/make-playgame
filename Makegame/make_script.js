@@ -28,7 +28,7 @@ for (let k = 0; k < n_h; k++){
 let Line = true;
 
 function setup() {
-  createCanvas(w_all,h_all);
+  createCanvas(w,h+100);
 }
 
 function draw_back(){
