@@ -3,6 +3,7 @@ const h = window.innerHeight;
 
 alert('Play')
 
+
 console.log(localStorage.getItem('MakeGame:BlockList'))
 
 function setup(){
