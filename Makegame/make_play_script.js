@@ -3,17 +3,13 @@ const h = window.innerHeight;
 
 let l = [];
 
-alert('play');
-
 l = JSON.parse(localStorage.getItem('MakeGame:BlockList'));
 
 const n_h = l.length;
 const n_w = l[0].length;
 const r = 30;
 
-alert(l.length);
-alert(l[0]);
-alert('var:1');
+
 
 function setup(){
   createCanvas(w,h)
