@@ -10,14 +10,14 @@ html, body {
   background-size: cover;
 }
 
-canvas, #canvas{
+canvas {
   margin: 0;
   position: fixed;
   left: 0px;
   top: 0px;
   overflow: hidden;
-  -webkit-touch-callout:none;
-  -webkit-user-select:none;
+  /*-webkit-touch-callout:none;
+  -webkit-user-select:none;*/
   touch-action: none;
 }
 
