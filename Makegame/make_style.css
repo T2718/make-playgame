@@ -2,17 +2,18 @@
   width: 100%;
   height: 100%;
   padding: 0;
-  background: skyblue;
   overflow: hidden;
 }
 html, body {
   margin: 0;
+  background-image: url("/background_image.png");
+  background-size: cover;
 }
 
 canvas{
   margin: 0;
   position: fixed;
-  bottom: 10px;
+  bottom: 50px;
   -webkit-touch-callout:none;
   -webkit-user-select:none;
 }
