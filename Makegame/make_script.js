@@ -1,10 +1,10 @@
 let canvas_id = document.getElementById('canvas');
 
-canvas_id.addEventListener("gesturestart", (e) => {
+document.addEventListener("gesturestart", (e) => {
   alert('ges');
   e.preventDefault();
 });
-canvas_id.addEventListener("scroll", (e) => {
+document.addEventListener("scroll", (e) => {
   alert('scr');
   e.preventDefault();
 });
