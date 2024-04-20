@@ -1,9 +1,12 @@
 let canvas_id = document.getElementById('canvas');
+let body_id = document.body;
 
 document.addEventListener("gesturestart", (e) => {
   e.preventDefault();
 });
+
 window.addEventListener("scroll", (e) => {
+  body_id.style.overflow = 'hidden';
   e.preventDefault();
 });
 
@@ -93,6 +96,7 @@ function draw() {
   //console.log(t[0]);
   //background(220);
   clear();
+  body_id.style.overflow = 'auto';
   strokeWeight(1);
   stroke(0);
   fill(255)
