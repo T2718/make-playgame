@@ -2,6 +2,7 @@ document.addEventListener("gesturestart", (e) => {
   e.preventDefault();
 });
 
+
 const w_all = window.innerWidth;
 const h_all = window.innerHeight;
 
