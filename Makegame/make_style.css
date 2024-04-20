@@ -3,6 +3,7 @@
   height: 100%;
   padding: 0;
   overflow: hidden;
+  font-size: 5px;
 }
 html, body {
   margin: 0;
