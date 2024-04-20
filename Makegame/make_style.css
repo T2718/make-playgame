@@ -19,6 +19,6 @@ canvas{
   -webkit-user-select:none;
 }
 
-.main {
+#main {
   top: 0px;
 }
