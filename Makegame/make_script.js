@@ -3,6 +3,9 @@ let canvas_id = document.getElementById('canvas');
 canvas_id.addEventListener("gesturestart", (e) => {
   e.preventDefault();
 });
+canvas_id.addEventListener("scroll", (e) => {
+  e.preventDefault();
+});
 
 let main_id = document.getElementById('main');
 
