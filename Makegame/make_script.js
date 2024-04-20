@@ -1,4 +1,6 @@
-document.addEventListener("gesturestart", (e) => {
+let canvas_id = document.getElementById('canvas');
+
+canvas_id.addEventListener("gesturestart", (e) => {
   e.preventDefault();
 });
 
@@ -28,7 +30,8 @@ for (let k = 0; k < n_h; k++){
 let Line = true;
 
 function setup() {
-  createCanvas(w,h+100);
+  let canvas = createCanvas(w,h+100);
+  canvas.parent('canvas');
 }
 
 function draw_back(){
