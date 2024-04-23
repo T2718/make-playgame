@@ -6,7 +6,7 @@ document.addEventListener("gesturestart", (e) => {
 });
 
 window.addEventListener("scroll", (e) => {
-  body_id.style.overflow = 'hidden';
+  //body_id.style.overflow = 'hidden';
   e.preventDefault();
 });
 
