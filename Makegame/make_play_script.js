@@ -19,6 +19,9 @@ if(n_h/n_w > h/w){
   r = w/n_w;
 }
 
+let me_x = 2.5;
+let me_y = 1.5;
+
 
 
 
@@ -37,4 +40,8 @@ function draw(){
       rect(left+k0*r,k*r,r,r);
     }
   }
+
+  fill(0,0,255);
+  rect(r*(me_x-0.5),(n_h-me_y-0.5)*r,r,r);
 }
+
