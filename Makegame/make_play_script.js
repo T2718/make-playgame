@@ -89,8 +89,6 @@ function hit(){
           me_y = k-0.5;
           //hit_tf = true;
           ground_tf = true;
-        } else {
-          ground_tf = false;
         }
         //右
         //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
@@ -128,6 +126,7 @@ function value_calc(){
         if(Math.sign(touch_x[0]-w/2) != Math.sign(touch_x[1]-w/2)){
           if(ground_tf){
             v_y = jump_v;
+            ground_tf = false;
           }
         }
       }
@@ -144,6 +143,7 @@ function value_calc(){
       if(Math.sign(touch_x[0]-w/2) != Math.sign(touch_x[1]-w/2)){
         if(ground_tf){
           v_y = jump_v;
+          ground_tf = false;
         }
       }
     }
