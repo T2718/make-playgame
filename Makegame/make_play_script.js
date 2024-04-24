@@ -25,6 +25,7 @@ let start_time = Date.now();
 let time_delta = Date.now()-start_time;
 let double_touch_start = Date.now();
 let double_touch_tf = false;
+let gound_tf = false;
 
 if(n_h/n_w > h/w){
   //hがぴったり
@@ -87,6 +88,9 @@ function hit(){
           v_y = 0;
           me_y = k-0.5;
           //hit_tf = true;
+          ground_tf = true;
+        } else {
+          ground_tf = false;
         }
         //右
         //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
