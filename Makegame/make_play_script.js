@@ -19,9 +19,10 @@ let v_x_origin = 8;
 let v_y = 0;
 //let hit_tf = true;
 const jump_v = -7;
-const g = 4;
+const g = 6;
 let start_time = Date.now();
 let time_delta = Date.now()-start_time;
+let double_touch_start = Date.now();
 
 if(n_h/n_w > h/w){
   //hがぴったり
@@ -112,19 +113,23 @@ function hit(){
 
 
 function value_calc(){
+
+  //Touch操作
   if(touch_num >= 1){
-    if(touch_num >= 2){
-      if(Math.sign(touch_x[0]-w/2) != Math.sign(touch_x[1]-w/2)){
-        v_y = jump_v;
-        //hit_tf = false;
+    if(Date.now()-double_touch_start >= 100){
+      if(touch_num >= 2){
+        if(Math.sign(touch_x[0]-w/2) != Math.sign(touch_x[1]-w/2)){
+          v_y = jump_v;
+          //hit_tf = false;
+        }
       }
-    }
-    if(touch_x[0] <= w/2){
-      v_x = -v_x_origin;
-      me_x += v_x*time_delta;
-    } else {
-      v_x = v_x_origin;
-      me_x += v_x*time_delta;
+      if(touch_x[0] <= w/2){
+        v_x = -v_x_origin;
+        me_x += v_x*time_delta;
+      } else {
+        v_x = v_x_origin;
+        me_x += v_x*time_delta;
+      }
     }
   }
   me_y += v_y*time_delta;
@@ -161,6 +166,9 @@ function touchStarted(){
     return k.y
   });
   touch_num = touch_x.length;
+  if(touch_num == 1){
+    double_touch_start = Date.now();
+  }
 }
 
 function touchEnded(){
