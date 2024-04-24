@@ -1,3 +1,4 @@
+alert('V:1.00.01');
 const w = window.innerWidth;
 const h = window.innerHeight;
 
@@ -23,6 +24,7 @@ const g = 6;
 let start_time = Date.now();
 let time_delta = Date.now()-start_time;
 let double_touch_start = Date.now();
+let double_touch_tf = false;
 
 if(n_h/n_w > h/w){
   //hがぴったり
@@ -116,7 +118,7 @@ function value_calc(){
 
   //Touch操作
   if(touch_num >= 1){
-    if(Date.now()-double_touch_start >= 100){
+    if(Date.now()-double_touch_start >= 100 && double_touch_tf == false){
       if(touch_num >= 2){
         if(Math.sign(touch_x[0]-w/2) != Math.sign(touch_x[1]-w/2)){
           v_y = jump_v;
@@ -129,6 +131,11 @@ function value_calc(){
       } else {
         v_x = v_x_origin;
         me_x += v_x*time_delta;
+      }
+    } else if(double_touch_tf) {
+      if(Math.sign(touch_x[0]-w/2) != Math.sign(touch_x[1]-w/2)){
+        v_y = jump_v;
+        //hit_tf = false;
       }
     }
   }
@@ -165,6 +172,13 @@ function touchStarted(){
   touch_y = touches.map((k) => {
     return k.y
   });
+  if(touch_num == 1){
+    if(Date.now() - double_touch_start <= 100){
+      if(Math.sign(touch_x[0]-w/2) != Math.sign(touch_x[1]-w/2)){
+        double_touch_tf = true;
+      }
+    }
+  }
   touch_num = touch_x.length;
   if(touch_num == 1){
     double_touch_start = Date.now();
@@ -179,4 +193,5 @@ function touchEnded(){
     return k.y
   });
   touch_num = touch_x.length;
+  double_touch_tf = false;
 }
