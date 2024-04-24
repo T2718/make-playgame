@@ -124,9 +124,11 @@ function value_calc(){
   if(touch_num >= 1){
     if(Date.now()-double_touch_start >= 100 && double_touch_tf == false){
       if(touch_num >= 2){
+        //ジャンプ
         if(Math.sign(touch_x[0]-w/2) != Math.sign(touch_x[1]-w/2)){
-          v_y = jump_v;
-          //hit_tf = false;
+          if(ground_tf){
+            v_y = jump_v;
+          }
         }
       }
       if(touch_x[0] <= w/2){
@@ -136,10 +138,13 @@ function value_calc(){
         v_x = v_x_origin;
         me_x += v_x*time_delta;
       }
+    //ダブルクリック
     } else if(double_touch_tf) {
+      //ジャンプ
       if(Math.sign(touch_x[0]-w/2) != Math.sign(touch_x[1]-w/2)){
-        v_y = jump_v;
-        //hit_tf = false;
+        if(ground_tf){
+          v_y = jump_v;
+        }
       }
     }
   }
