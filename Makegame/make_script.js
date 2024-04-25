@@ -23,13 +23,18 @@ let w = n_w*r;
 let h = n_h*r;
 let t = [];
 let t_m = [];
+
+let me_x = 2.5;
+let me_y = 6.5;
+
+//[[]]←H,W
 let l = [];
 let t_num = 0;
 
 main_id.style.top = String(h+100)+"px";
 //main_id.style.top = "0px";
 main_id.style.fontSize = "30px";
-alert(main_id.style.top)
+//alert(main_id.style.top)
 
 for (let k = 0; k < n_h; k++){
   l.push([]);
@@ -50,7 +55,7 @@ function draw_back(){
   noStroke();
   fill(220);
   rect(0,h,w,100);
-  
+
   if(Line == true){
     strokeWeight(0.5);
     stroke(180);
@@ -61,7 +66,7 @@ function draw_back(){
       line(0,k*r,w,k*r);
     }
   }
-  
+
   noStroke();
   fill(255,0,0);
   rect(25,h+25,100,50);
@@ -74,7 +79,7 @@ function touch_func(){
   //console.log(0 <= t_m[0].x && t_m[0].x <= w && 0 <= t_m[0].y && t_m[0].y <= h)
   if(0 <= t_m[0].x && t_m[0].x <= w && 0 <= t_m[0].y && t_m[0].y <= h){
     l[floor(t_m[0].y/r)][floor(t_m[0].x/r)] = t_num;
-    
+
     console.log(l[floor(t_m[0].y/r)][floor(t_m[0].x/r)])
   }
 }
@@ -101,13 +106,13 @@ function draw() {
   stroke(0);
   fill(255)
   rect(0,0,w,h);
-  
+
   draw_block();
-  
+
   draw_back();
-  
-  
-  
+
+
+
 }
 
 function touchStarted(){
@@ -119,7 +124,18 @@ function touchStarted(){
   if(25 <= t[0].x && t[0].x <= 125 && h+25 <= t[0].y && t[0].y <= h+75){
     const json_k = serializedArray = JSON.stringify(l);
     localStorage.setItem('MakeGame:BlockList',json_k);
-    window.location.href = "./make_play"
+    let l_k = '1'+l.join('').replaceAll(',','');
+    l_k = BigInt("0b"+l_k).toString();
+    let l_k0 = ""
+    try{
+      l_k0 = [me_x-0.5,me_y-0.5,n_h,n_w,2].join('-')
+    } catch(e) {
+      alert("ParseError:"+e)
+    }
+    l_k = l_k0+"-"+l_k;
+    //alert(l_k);
+    //alert();
+    window.location.href = "./make_play?l="+l_k;
   }
   touch_func();
 }
