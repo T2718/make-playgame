@@ -27,6 +27,8 @@ let double_touch_start = Date.now();
 let double_touch_tf = false;
 let gound_tf = false;
 
+let margin = 50;
+
 if(n_h/n_w > h/w){
   //hがぴったり
   r = h/n_h;
@@ -120,7 +122,7 @@ function value_calc(){
 
   //Touch操作
   if(touch_num >= 1){
-    if(Date.now()-double_touch_start >= 100 && double_touch_tf == false){
+    if(Date.now()-double_touch_start >= margin && double_touch_tf == false){
       if(touch_num >= 2){
         //ジャンプ
         if(Math.sign(touch_x[0]-w/2) != Math.sign(touch_x[1]-w/2)){
@@ -182,7 +184,7 @@ function touchStarted(){
     return k.y
   });
   if(touch_num == 1){
-    if(Date.now() - double_touch_start <= 100){
+    if(Date.now() - double_touch_start <= margin){
       if(Math.sign(touch_x[0]-w/2) != Math.sign(touch_x[1]-w/2)){
         double_touch_tf = true;
       }
