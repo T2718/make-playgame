@@ -138,7 +138,7 @@ function touchStarted(){
     l_k = l_k0+"-"+l_k;
     //alert(l_k);
     //alert();
-    window.open("./make_play?l="+l_k);
+    window.location.href = "./make_play?l="+l_k;
   }
   touch_func();
 }
