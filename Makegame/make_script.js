@@ -51,11 +51,11 @@ for (let k = 0; k < n_h; k++){
 
 let valueset = document.getElementById('valueset');
 valueset.onclick = () => {
-  let g_k = prompt("重力加速度","");
+  let g_k = prompt("重力加速度(通常10)","");
   if(g_k != null) g = Math.abs(Number(g_k));
-  let jump_k = prompt("ジャンプ速度","");
+  let jump_k = prompt("ジャンプ速度(通常8)","");
   if(jump_k != null) jump_v = -Math.abs(Number(jump_k));
-  let wh_k = prompt("自分の座標(左上から数えて何マス目か(四角の左上基準))\n2,6  のように入力してください。","");
+  let wh_k = prompt("自分の座標(左上から数えて何マス目か(四角の左上基準))\n2,6  のように入力してください。(通常3,10)","");
   if(wh_k != null){
     try{
       wh_k = wh_k.split(',');
