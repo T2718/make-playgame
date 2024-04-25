@@ -70,7 +70,7 @@ valueset.onclick = () => {
 
 try{
   p_s = localStorage.getItem('MakeGame:BlockList');
-  alert(p_s)
+  //alert(p_s)
   let p_s_tf = false;
   if(p_s != null && (p_s.match(/-/g) || []).length == 7){
     p_s_tf = confirm('以前のデータが残っていますが復元しますか？')
@@ -93,7 +93,7 @@ try{
     }
     let N_k_k = BigInt(p_s[6]);
     let L_k_k = BigInt(p_s[7]);
-    alert([g,jump_v,me_x,me_y,n_h,n_w,N_k_k,L_k_k]);
+    //alert([g,jump_v,me_x,me_y,n_h,n_w,N_k_k,L_k_k]);
     let k_k = L_k_k;
     let N_n_k_k = "";
     while(true){
