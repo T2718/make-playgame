@@ -6,15 +6,70 @@ let l = [];
 //lは[[◯*W]*H]個で入っている
 
 let params = (new URL(window.location.href)).searchParams;
-let params_split = params.get('l').split('-');
+let params_l = params.get('l');
+let p_s = [];
 
-alert(params_split);
+let n_h = 15;
+let n_w = 30;
+let l  = [];
+for (let k = 0; k < n_h; k++){
+  l.push([])
+  for (let k0 = 0; k0 < n_w; k++){
+    l[k].push(0);
+  }
+}
+//左上基準
+let me_x = 2.5;
+let me_y = 12.5;
+
+
+try{
+  p_s = params_l.split('-');
+  me_x = Number(p_s[0])+0.5;
+  me_y = Number(p_s[1])+0.5;
+  n_h = Number(p_s[2]);
+  n_w = Number(p_s[3]);
+  l = [];
+  for (let k = 0; k < n_h; k++){
+  l.push([])
+  for (let k0 = 0; k0 < n_w; k++){
+    l[k].push(0);
+  }
+}
+  let N_k_k = Number(p_s[4]);
+  let L_k_k = Number(p_s[5]);
+  let k_k = L_k_k;
+  let N_n_k_k = "";
+  while(true){
+    N_n_k_k += (k_k%N_k_k).toString();
+    k_k = parseInt((k_k-k_k%N_k_k)/2);
+    if(k_k == 0){
+      break;
+    }
+  }
+  N_n_k_k = N_n_k_k.split("").reverse();
+  let k_k0 = 0;
+  for(let k_k_h = 0; k_k_h < n_h; k_k_h++){
+    for(let k_k_w = 0; k_k_w < n_w; k_k_w++){
+      l[k_k_h][k_k_w] = Number(N_n_k_k[k_k0]);
+      k_k0 += 1;
+    }
+  }
+
+  alert(N_n_k_k);
+  
+  alert(params_split);
+} catch {
+  
+}
+
+
 
 l = JSON.parse(localStorage.getItem('MakeGame:BlockList'));
 
 
-const n_h = l.length;
-const n_w = l[0].length;
+n_h = l.length;
+n_w = l[0].length;
 let r = 30;
 let left = 0;
 let touch_x = [];
@@ -44,9 +99,7 @@ if(n_h/n_w > h/w){
   r = w/n_w;
 }
 
-//左上基準
-let me_x = 2.5;
-let me_y = 12.5;
+
 
 
 
