@@ -15,6 +15,9 @@ let n_h = 15;
 let n_w = 30;
 let l  = [];
 let l0 = [];
+
+
+
 for (let k = 0; k < n_w; k++){
   l0.push(0);
 }
@@ -90,7 +93,7 @@ let double_touch_start = Date.now();
 let double_touch_tf = false;
 let ground_tf = false;
 
-let margin = 80;
+let margin = 30;
 
 
 if(n_h/n_w > h/w){
