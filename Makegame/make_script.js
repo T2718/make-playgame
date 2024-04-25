@@ -27,6 +27,9 @@ let t_m = [];
 let me_x = 2.5;
 let me_y = 6.5;
 
+let jump = -5;
+let g = 8;
+
 //[[]]←H,W
 let l = [];
 let t_num = 0;
@@ -128,7 +131,7 @@ function touchStarted(){
     l_k = BigInt("0b"+l_k).toString();
     let l_k0 = ""
     try{
-      l_k0 = [me_x-0.5,me_y-0.5,n_h,n_w,2].join('-')
+      l_k0 = [g,-jump,me_x-0.5,me_y-0.5,n_h,n_w,2].join('-')
     } catch(e) {
       alert("ParseError:"+e)
     }
