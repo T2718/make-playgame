@@ -15,11 +15,6 @@ let n_h = 15;
 let n_w = 30;
 let l  = [];
 let l0 = [];
-let jump_v = -7;
-let g = 6;
-
-
-
 for (let k = 0; k < n_w; k++){
   l0.push(0);
 }
@@ -31,12 +26,15 @@ for (let k = 0; k < n_h; k++){
 let me_x = 2.5;
 let me_y = 12.5;
 
+let jump_v = -7;
+let g = 6;
+
 
 
 try{
   p_s = params_l.split('-');
   g = Number(p_s[0]);
-  jump = -Number(p_s[1]);
+  jump_v = -Number(p_s[1]);
   me_x = Number(p_s[2])+0.5;
   me_y = Number(p_s[3])+0.5;
   n_h = Number(p_s[4]);
@@ -89,14 +87,13 @@ let v_x = 8;
 let v_x_origin = 8;
 let v_y = 0;
 //let hit_tf = true;
-
 let start_time = Date.now();
 let time_delta = Date.now()-start_time;
 let double_touch_start = Date.now();
 let double_touch_tf = false;
 let ground_tf = false;
 
-let margin = 30;
+let margin = 80;
 
 
 if(n_h/n_w > h/w){
