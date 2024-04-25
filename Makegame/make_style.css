@@ -23,6 +23,12 @@ canvas {
   touch-action: none;
 }
 
+button {
+  width: 100px;
+  height: 100px;
+  font-size: 10px;
+}
+
 #main {
   top: 550px;
 }
