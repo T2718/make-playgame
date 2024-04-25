@@ -32,7 +32,8 @@ let double_touch_start = Date.now();
 let double_touch_tf = false;
 let ground_tf = false;
 
-let margin = 50;
+let margin = 80;
+
 
 if(n_h/n_w > h/w){
   //hがぴったり
