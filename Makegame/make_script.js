@@ -10,6 +10,8 @@ window.addEventListener("scroll", (e) => {
   e.preventDefault();
 });
 
+
+
 let main_id = document.getElementById('main');
 
 
@@ -46,6 +48,74 @@ for (let k = 0; k < n_h; k++){
   }
 }
 
+
+let valueset = document.getElementById('valueset');
+valueset.onclick = () => {
+  let g_k = prompt("重力加速度","");
+  if(g_k != null) g = Math.abs(Number(g_k));
+  let jump_k = prompt("ジャンプ速度","");
+  if(jump_k != null) jump_v = -Math.abs(Number(jump_k));
+  let wh_k = prompt("自分の座標(左上から数えて何マス目か(四角の左上基準))\n2,6  のように入力してください。","");
+  if(wh_k != null){
+    try{
+      wh_k = wh_k.split(',');
+      me_x = Number(wh_k[0])+0.5;
+      me_y = Number(wh_k[1])+0.5;
+    } catch {
+      alert("Error:  2,6   のように入力してください。")
+    }
+  }
+  
+}
+
+try{
+  p_s = localStorage.getItem('MakeGame:BlockList');
+  alert(p_s)
+  let p_s_tf = false;
+  if(p_s != null && (p_s.match(/-/g) || []).length == 7){
+    p_s_tf = confirm('以前のデータが残っていますが復元しますか？')
+  }
+  if(p_s_tf){
+    p_s = p_s.split('-');
+    g = Number(p_s[0]);
+    jump_v = -Number(p_s[1]);
+    me_x = Number(p_s[2])+0.5;
+    me_y = Number(p_s[3])+0.5;
+    n_h = Number(p_s[4]);
+    n_w = Number(p_s[5]);
+    l = [];
+    l0 = [];
+    for (let k = 0; k < n_w; k++){
+      l0.push(0);
+    }
+    for (let k = 0; k < n_h; k++){
+      l.push(l0.concat())
+    }
+    let N_k_k = BigInt(p_s[6]);
+    let L_k_k = BigInt(p_s[7]);
+    alert([g,jump_v,me_x,me_y,n_h,n_w,N_k_k,L_k_k]);
+    let k_k = L_k_k;
+    let N_n_k_k = "";
+    while(true){
+      N_n_k_k += (k_k%N_k_k).toString();
+      k_k = BigInt((k_k-k_k%N_k_k)/2n);
+      if(k_k == 0){  
+        break;
+      }
+    }
+    N_n_k_k = N_n_k_k.split("").reverse().slice(1);
+    let k_k0 = 0;
+    for(let k_k_h = 0; k_k_h < n_h; k_k_h++){
+      for(let k_k_w = 0; k_k_w < n_w; k_k_w++){
+        l[k_k_h][k_k_w] = Number(N_n_k_k[k_k0]);
+        k_k0 += 1;
+      }
+    }
+  }
+  //alert(l)
+} catch(e) {
+  alert(e)
+}
 
 let Line = true;
 
@@ -126,7 +196,7 @@ function touchStarted(){
   }
   if(25 <= t[0].x && t[0].x <= 125 && h+25 <= t[0].y && t[0].y <= h+75){
     const json_k = serializedArray = JSON.stringify(l);
-    localStorage.setItem('MakeGame:BlockList',json_k);
+    
     let l_k = '1'+l.join('').replaceAll(',','');
     l_k = BigInt("0b"+l_k).toString();
     let l_k0 = ""
@@ -138,6 +208,7 @@ function touchStarted(){
     l_k = l_k0+"-"+l_k;
     //alert(l_k);
     //alert();
+    localStorage.setItem('MakeGame:BlockList',l_k);
     window.location.href = "./make_play?l="+l_k;
   }
   touch_func();
