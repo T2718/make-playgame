@@ -48,6 +48,7 @@ try{
     }
   }
   N_n_k_k = N_n_k_k.split("").reverse();
+  alert(N_n_k_k);
   let k_k0 = 0;
   for(let k_k_h = 0; k_k_h < n_h; k_k_h++){
     for(let k_k_w = 0; k_k_w < n_w; k_k_w++){
