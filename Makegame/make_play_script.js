@@ -25,7 +25,7 @@ let start_time = Date.now();
 let time_delta = Date.now()-start_time;
 let double_touch_start = Date.now();
 let double_touch_tf = false;
-let gound_tf = false;
+let ground_tf = false;
 
 let margin = 10;
 
