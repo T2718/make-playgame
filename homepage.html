@@ -52,6 +52,17 @@
       div.cont {
         background-color: #e6e6fa;
       }
+      header {
+        width: 100%;
+        height: 50px;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        position: absolute;
+        display: grid;
+        grid-template-columns: 1fr 3fr 3fr
+        grid-template-rows: 1fr;
+      }
     </style>
   </head>
   <body>
@@ -68,7 +79,11 @@
         window.location.href = "./login";
       }
     </script>
-    <div onclick="LogOut();"><b style="color: #ff00ff">Logout</b></div>
+    <header>
+      <div onclick="LogOut();"><b style="color: #ff00ff">Logout</b></div>
+      <div><input type="submit" href="./Makegame/make" value="Make" /></div>
+      <div><input type="submit" href="./Library/library-play" value="Library" /></div>
+    </header>
     <h1>
       [Make&PlayGame]
     </h1>
