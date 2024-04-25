@@ -99,8 +99,8 @@
       <div>
         <header>
           <div onclick="LogOut();"><b style="color: #ff00ff">Logout</b></div>
-          <div><input type="submit" href="./Makegame/make" value="Make" /></div>
-          <div><input type="submit" href="./Library/library-play" value="Library" /></div>
+          <div><input type="submit" id="make" value="Make" /></div>
+          <div><input type="submit" id="library" value="Library" /></div>
         </header>
       </div>
       <div>
@@ -151,6 +151,17 @@
     </div>
     <script>
       document.getElementById('h2_title').innerText = localStorage.getItem('name')+"さんこんにちは！";
+      function make_click(){
+        window.location.href = "./Makegame/make";
+      }
+      function library_click(){
+        window.location.href = "./Library/library-play";
+      }
+
+      let make = document.getElementById('make');
+      make.onclick = make_click;
+      let library = document.getElementById('library');
+      library.onclick = library_click;
     </script>
   </body>
 </html>
