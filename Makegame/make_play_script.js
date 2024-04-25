@@ -15,6 +15,8 @@ let n_h = 15;
 let n_w = 30;
 let l  = [];
 let l0 = [];
+let jump_v = -7;
+let g = 6;
 
 
 
@@ -33,10 +35,12 @@ let me_y = 12.5;
 
 try{
   p_s = params_l.split('-');
-  me_x = Number(p_s[0])+0.5;
-  me_y = Number(p_s[1])+0.5;
-  n_h = Number(p_s[2]);
-  n_w = Number(p_s[3]);
+  g = Number(p_s[0]);
+  jump = -Number(p_s[1]);
+  me_x = Number(p_s[2])+0.5;
+  me_y = Number(p_s[3])+0.5;
+  n_h = Number(p_s[4]);
+  n_w = Number(p_s[5]);
   l = [];
   l0 = []
   for (let k = 0; k < n_w; k++){
@@ -45,8 +49,8 @@ try{
   for (let k = 0; k < n_h; k++){
     l.push(l0.concat())
   }
-  let N_k_k = BigInt(p_s[4]);
-  let L_k_k = BigInt(p_s[5]);
+  let N_k_k = BigInt(p_s[6]);
+  let L_k_k = BigInt(p_s[7]);
   let k_k = L_k_k;
   let N_n_k_k = "";
   while(true){
@@ -85,8 +89,7 @@ let v_x = 8;
 let v_x_origin = 8;
 let v_y = 0;
 //let hit_tf = true;
-const jump_v = -7;
-const g = 6;
+
 let start_time = Date.now();
 let time_delta = Date.now()-start_time;
 let double_touch_start = Date.now();
