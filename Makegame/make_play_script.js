@@ -6,7 +6,9 @@ let l = [];
 //lは[[◯*W]*H]個で入っている
 
 let params = (new URL(window.location.href)).searchParams;
-let params_split = params.get('l');
+let params_split = params.get('l').split('-');
+
+alert(params_split);
 
 l = JSON.parse(localStorage.getItem('MakeGame:BlockList'));
 
