@@ -31,6 +31,7 @@ let g = 6;
 
 
 
+//クエリパラメータの処理
 try{
   p_s = params_l.split('-');
   g = Number(p_s[0]);
@@ -53,7 +54,7 @@ try{
   let N_n_k_k = "";
   while(true){
     N_n_k_k += (k_k%N_k_k).toString();
-    k_k = BigInt((k_k-k_k%N_k_k)/2n);
+    k_k = BigInt((k_k-k_k%N_k_k)/N_k_k);
     if(k_k == 0){
       break;
     }
@@ -126,12 +127,19 @@ function draw_all(){
   for (let k = 0; k < n_h; k++){
     for (let k0 = 0; k0 < n_w; k0++){
       fill(255-100*l[k][k0]);
+      //fill(255-100*l[k][k0]);
+      if(l[k][k0] == 2){
+        fill(255,0,0)
+      }
+      strokeWeight(1);
+      //rect(k0*r,k*r,r,r);
       rect(left+k0*r,k*r,r,r);
     }
   }
 
   noStroke();
   fill(0,0,255);
+  
   rect(r*(me_x-0.5),(me_y-0.5)*r,r,r);
 }
 
@@ -174,6 +182,16 @@ function hit(){
           v_y = 0;
           me_y = k+1.5;
           //hit_tf = true;
+        }
+      } else if(l[k][k0] == 2){
+        try{
+          if(k0 < me_x+0.5 && me_x-0.5 < k0+1 && me_y-0.5 < k+1 && k+1 < me_y+0.5){
+            //alert('dead')
+            textSize(20);
+            text('Dead',100,100);
+          }
+        } catch(e) {
+          alert(e)
         }
       }
     }
