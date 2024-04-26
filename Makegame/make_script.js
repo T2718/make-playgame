@@ -25,6 +25,7 @@ let w = n_w*r;
 let h = n_h*r;
 let t = [];
 let t_m = [];
+let N_base = 3;
 
 let me_x = 2.5;
 let me_y = 6.5;
@@ -51,11 +52,11 @@ for (let k = 0; k < n_h; k++){
 
 let valueset = document.getElementById('valueset');
 valueset.onclick = () => {
-  let g_k = prompt("重力加速度(通常10)","");
+  let g_k = prompt("重力加速度","");
   if(g_k != null) g = Math.abs(Number(g_k));
-  let jump_k = prompt("ジャンプ速度(通常8)","");
+  let jump_k = prompt("ジャンプ速度","");
   if(jump_k != null) jump_v = -Math.abs(Number(jump_k));
-  let wh_k = prompt("自分の座標(左上から数えて何マス目か(四角の左上基準))\n2,6  のように入力してください。(通常3,10)","");
+  let wh_k = prompt("自分の座標(左上から数えて何マス目か(四角の左上基準))\n2,6  のように入力してください。","");
   if(wh_k != null){
     try{
       wh_k = wh_k.split(',');
@@ -98,12 +99,13 @@ try{
     let N_n_k_k = "";
     while(true){
       N_n_k_k += (k_k%N_k_k).toString();
-      k_k = BigInt((k_k-k_k%N_k_k)/2n);
-      if(k_k == 0){  
+      k_k = BigInt((k_k-k_k%N_k_k)/N_k_k);
+      if(k_k == 0n){  
         break;
       }
     }
     N_n_k_k = N_n_k_k.split("").reverse().slice(1);
+    //alert(N_n_k_k)
     let k_k0 = 0;
     for(let k_k_h = 0; k_k_h < n_h; k_k_h++){
       for(let k_k_w = 0; k_k_w < n_w; k_k_w++){
@@ -162,6 +164,9 @@ function draw_block(){
     for (let k0 = 0; k0 < n_w ; k0++){
       noStroke();
       fill(255-100*l[k][k0]);
+      if(l[k][k0] == 2){
+        fill(255,0,0)
+      }
       rect(k0*r,k*r,r,r);
     }
   }
@@ -192,24 +197,44 @@ function touchStarted(){
   t = touches;
   t_m = touches;
   if(0 <= t_m[0].x && t_m[0].x <= w && 0 <= t_m[0].y && t_m[0].y <= h){
-    t_num = 1-l[floor(t_m[0].y/r)][floor(t_m[0].x/r)];
+    t_num = (1+l[floor(t_m[0].y/r)][floor(t_m[0].x/r)])%N_base;
   }
   if(25 <= t[0].x && t[0].x <= 125 && h+25 <= t[0].y && t[0].y <= h+75){
-    const json_k = serializedArray = JSON.stringify(l);
+    //alert('hey')
+    //const json_k = serializedArray = JSON.stringify(l);
     
-    let l_k = '1'+l.join('').replaceAll(',','');
-    l_k = BigInt("0b"+l_k).toString();
-    let l_k0 = ""
     try{
-      l_k0 = [g,-jump_v,me_x-0.5,me_y-0.5,n_h,n_w,2].join('-')
+      let l_k = ('1'+l.join('').replaceAll(',','')).split('').reverse();
+      
+      let digit = 0n;
+      //let N_k1 = 0n;
+      //alert(l_k.join(''))
+      for (let N_k1 = 0n; N_k1 < BigInt(l_k.length); N_k1 += 1n) {
+        //N_k1 += 1n;
+        /*if(l_k % BigInt(N_base) != 0n){
+          digit += BigInt(N_base)**N_k1*(l_k % BigInt(N_base));
+        }
+        l_k = BigInt(l_k/BigInt(N_base));*/
+        digit += BigInt(l_k[N_k1])*(BigInt(N_base)**N_k1);
+        l
+        
+      }
+      l_k = digit.toString();
+      //alert(l_k)
+    
+      let l_k0 = ""
+      //alert('try')
+    
+      l_k0 = [g,-jump_v,me_x-0.5,me_y-0.5,n_h,n_w,N_base].join('-')
+    
+      l_k = l_k0+"-"+l_k;
+      //alert(l_k);
+      //alert();
+      localStorage.setItem('MakeGame:BlockList',l_k);
+      window.location.href = "./make_play?l="+l_k;
     } catch(e) {
-      alert("ParseError:"+e)
+      alert('Window:'+e);
     }
-    l_k = l_k0+"-"+l_k;
-    //alert(l_k);
-    //alert();
-    localStorage.setItem('MakeGame:BlockList',l_k);
-    window.location.href = "./make_play?l="+l_k;
   }
   touch_func();
 }
