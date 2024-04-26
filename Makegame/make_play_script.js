@@ -9,12 +9,16 @@ let params = (new URL(window.location.href)).searchParams;
 
 let params_l = params.get('l');
 
+let dead_tf = false;
+let dead1_tf = false;
 let p_s = [];
 
 let n_h = 15;
 let n_w = 30;
 let l  = [];
 let l0 = [];
+
+let hit_tf = false;
 for (let k = 0; k < n_w; k++){
   l0.push(0);
 }
@@ -94,7 +98,7 @@ let double_touch_start = Date.now();
 let double_touch_tf = false;
 let ground_tf = false;
 
-let margin = 80;
+let margin = 100;
 
 
 if(n_h/n_w > h/w){
@@ -154,6 +158,7 @@ function hit(){
   stroke(0,0,255);
   textSize(50);
   let list_k = [];
+  hit_tf = false;
   for(let k = 0; k < n_h; k++){
     for(let k0 = 0; k0 < n_w; k0++){
       console.log(l[k][k0])
@@ -164,31 +169,32 @@ function hit(){
           me_y = k-0.5;
           //hit_tf = true;
           ground_tf = true;
+          hit_tf = true;
         }
         //右
         //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
         if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x-0.5 > k0+0.5 && k0+1 > me_x-0.5)){
           v_x = 0;
           me_x = k0+1.5;
+          hit_tf = true;
         }
         //左
         //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
         if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x+0.5 < k0+0.5 && k0 < me_x+0.5)){
           v_x = 0;
           me_x = k0-0.5;
+          hit_tf = true;
         }
         //下
         if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y-0.5 < k+1 && k+0.5 < me_y-0.5)){
           v_y = 0;
           me_y = k+1.5;
-          //hit_tf = true;
+          hit_tf = true;
         }
       } else if(l[k][k0] == 2){
         try{
-          if(k0 < me_x+0.5 && me_x-0.5 < k0+1 && me_y-0.5 < k+1 && k+1 < me_y+0.5){
-            //alert('dead')
-            textSize(20);
-            text('Dead',100,100);
+          if(k0 < me_x+0.5 && me_x-0.5 < k0+1 && me_y-0.5 < k+1 && k < me_y+0.5){
+            dead1_tf = true;
           }
         } catch(e) {
           alert(e)
@@ -196,6 +202,19 @@ function hit(){
       }
     }
   }
+  if(dead1_tf && hit_tf == false){
+    
+    //alert('dead')
+    textSize(20);
+    text('Dead',100,100);
+    if(dead_tf == false) {
+      alert("You Died!")
+    }
+    dead_tf = true;
+
+    
+  }
+  dead1_tf = false;
   //text(list_k.toString(),100,100);
 }
 
@@ -254,6 +273,10 @@ function draw(){
   draw_all();
 
   hit();
+
+  if(dead_tf){
+    window.location.reload();
+  }
 
 }
 
