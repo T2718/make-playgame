@@ -16,6 +16,9 @@ let p_s = [];
 let goal_tf = false;
 let goal1_tf = false;
 
+
+let block_time = {4:[]};
+
 let n_h = 15;
 let n_w = 30;
 let l  = [];
@@ -69,7 +72,7 @@ try{
       break;
     }
   }
-  N_n_k_k = N_n_k_k.split("").reverse();
+  N_n_k_k = N_n_k_k.split("").reverse().splice(0,1);
   //alert(N_n_k_k);
   let k_k0 = 1;
   for(let k_k_h = 0; k_k_h < n_h; k_k_h++){
@@ -238,9 +241,11 @@ function hit(){
           if(l[k][k0] == 4){
             v_y = 0;
             ground_tf = true;
-            l[k][k0] = 0;
             hit_tf = true;
             me_y = k-0.5;
+
+            block_time[4].push([k,k0,Date.now()]);
+
           }
         }
       } catch(e) {
@@ -250,6 +255,16 @@ function hit(){
   }
 }
 
+
+
+function block_time_func(){
+  for(let k = 0; k < block_list[4].length; k++){
+    if(Date.now()-block_list[4][k][2] >= 500){
+      l[block_list[4][k][0]][block_list[4][k][1]] = 0;
+      block_list[4].splice(k,1);
+    }
+  }
+}
 
 function value_calc(){
 
@@ -291,10 +306,10 @@ function value_calc(){
     //alert('dead')
     textSize(20);
     text('Dead',100,100);
-    if(dead_tf == false) {
+    /*if(dead_tf == false) {
       
       
-    }
+    }*/
     
   }
   dead1_tf = false;
