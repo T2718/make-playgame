@@ -202,20 +202,7 @@ function hit(){
       }
     }
   }
-  if(dead1_tf && hit_tf == false){
-    
-    //alert('dead')
-    textSize(20);
-    text('Dead',100,100);
-    if(dead_tf == false) {
-      alert("You Died!")
-    }
-    dead_tf = true;
-
-    
-  }
-  dead1_tf = false;
-  //text(list_k.toString(),100,100);
+  
 }
 
 
@@ -255,6 +242,20 @@ function value_calc(){
   me_y += v_y*time_delta;
   //if(hit_tf == false){
   v_y += g*time_delta;
+  if(dead1_tf){
+    
+    //alert('dead')
+    textSize(20);
+    text('Dead',100,100);
+    if(dead_tf == false) {
+      alert("You Died!")
+    }
+    dead_tf = true;
+
+    
+  }
+  dead1_tf = false;
+  //text(list_k.toString(),100,100);
 }
 
 
