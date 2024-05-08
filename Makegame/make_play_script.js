@@ -101,7 +101,10 @@ try{
 
 n_h = l.length;
 n_w = l[0].length;
-let r = 30;
+//let r = 30;
+let r = Math.floor(Math.min(w_all/n_w,h_all/n_h));
+/*let w = n_w*r;
+let h = n_h*r;*/
 let left = 0;
 let touch_x = [];
 let touch_y = [];
