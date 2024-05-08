@@ -199,7 +199,7 @@ function hit(){
       //右
       //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
       if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x-0.5 > k0+0.5 && k0+1 > me_x-0.5)){
-        if(l[k][k0] == 1 || l[k][k0] == 4){
+        if(l[k][k0] == 1){
           v_x = 0;
           me_x = k0+1.5;
           hit_tf = true;
@@ -208,7 +208,7 @@ function hit(){
       //左
       //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
       if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x+0.5 < k0+0.5 && k0 < me_x+0.5)){
-        if(l[k][k0] == 1 || l[k][k0] == 4){
+        if(l[k][k0] == 1){
           v_x = 0;
           me_x = k0-0.5;
           hit_tf = true;
@@ -216,7 +216,7 @@ function hit(){
       }
       //下
       if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y-0.5 < k+1 && k+0.5 < me_y-0.5)){
-        if(l[k][k0] == 1 || l[k][k0] == 4){
+        if(l[k][k0] == 1){
           v_y = 0;
           me_y = k+1.5;
           hit_tf = true;
@@ -238,12 +238,6 @@ function hit(){
       console.log(l[k][k0])
       
       try{
-        //どこでも
-        if(k0 < me_x+0.5 && me_x-0.5 < k0+1 && me_y-0.5 < k+1 && k < me_y+0.5){
-          if(l[k][k0] == 2){
-            dead1_tf = true;
-          }
-        }
         //上
         if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y+0.5 > k && k+0.5 > me_y+0.5)){
           if(l[k][k0] == 4){
@@ -257,6 +251,38 @@ function hit(){
               block_time_list[4].push([k,k0]);
             }
 
+          }
+        }
+        //右
+        //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
+        if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x-0.5 > k0+0.5 && k0+1 > me_x-0.5)){
+          if(l[k][k0] == 4){
+            v_x = 0;
+            me_x = k0+1.5;
+            hit_tf = true;
+          }
+        }
+        //左
+        //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
+        if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x+0.5 < k0+0.5 && k0 < me_x+0.5)){
+          if(l[k][k0] == 4){
+            v_x = 0;
+            me_x = k0-0.5;
+            hit_tf = true;
+          }
+        }
+        //下
+        if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y-0.5 < k+1 && k+0.5 < me_y-0.5)){
+          if(l[k][k0] == 4){
+            v_y = 0;
+            me_y = k+1.5;
+            hit_tf = true;
+          }
+        }
+        //どこでも
+        if(k0 < me_x+0.5 && me_x-0.5 < k0+1 && me_y-0.5 < k+1 && k < me_y+0.5){
+          if(l[k][k0] == 2){
+            dead1_tf = true;
           }
         }
       } catch(e) {
