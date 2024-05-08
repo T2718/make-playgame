@@ -73,9 +73,9 @@ try{
     }
   }
   alert(N_n_k_k);
-  N_n_k_k = N_n_k_k.split("").splice(0,1).reverse();
+  N_n_k_k = N_n_k_k.split("").reverse().splice(0,1);
   //alert(N_n_k_k);
-  let k_k0 = 1;
+  let k_k0 = 0;
   for(let k_k_h = 0; k_k_h < n_h; k_k_h++){
     for(let k_k_w = 0; k_k_w < n_w; k_k_w++){
       l[k_k_h][k_k_w] = Number(N_n_k_k[k_k0]);
