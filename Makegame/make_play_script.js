@@ -1,4 +1,9 @@
 //alert('V:1.00.02');
+
+window.onerror = function(message, source, lineno, colno, error) {
+  alert('error:'+message+'\n\nlineno:'+lineno.toString()+'\n\ncolno:'+colno.toString());
+}
+
 const w = window.innerWidth;
 const h = window.innerHeight;
 
