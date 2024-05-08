@@ -76,7 +76,7 @@ try{
   p_s = localStorage.getItem('MakeGame:BlockList');
   //alert(p_s)
   let p_s_tf = false;
-  if(p_s != null && (p_s.match(/-/g) || []).length == 7){
+  if(p_s != null && (p_s.match(/-/g) || []).length == 8){
     p_s_tf = confirm('以前のデータが残っていますが復元しますか？')
   }
   if(p_s_tf){
