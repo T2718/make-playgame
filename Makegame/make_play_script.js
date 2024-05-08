@@ -3,7 +3,11 @@
 window.onerror = function(message, source, lineno, colno, error) {
   alert('error:'+message+'\n\nlineno:'+lineno.toString()+'\n\ncolno:'+colno.toString());
 }
-while (true){
+
+let while_tf = true;
+
+while (while_tf){
+  while_tf = false;
 const w = window.innerWidth;
 const h = window.innerHeight;
 
@@ -393,6 +397,7 @@ function draw(){
 
   if(dead_tf){
     //window.location.reload();
+    while_tf = true;
     continue;
   }
 
