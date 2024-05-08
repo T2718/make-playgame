@@ -228,7 +228,7 @@ function touchStarted(){
       let l_k0 = ""
       //alert('try')
     
-      l_k0 = [g,-jump_v,margin_t,me_x-0.5,me_y-0.5,n_h,n_w,N_base].join('-')
+      l_k0 = [g,-jump_v,margin_t,me_x-0.5,me_y+0.5,n_h,n_w,N_base].join('-')
     
       l_k = l_k0+"-"+l_k;
       //alert(l_k);
