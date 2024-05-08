@@ -26,7 +26,11 @@ let w = n_w*r;
 let h = n_h*r;
 let t = [];
 let t_m = [];
+
+//ブロックの種類の個数
 let N_base = 5;
+
+
 let margin_t = 50;
 
 let me_x = 2.5;
@@ -154,6 +158,7 @@ function draw_back(){
 
 
 
+//Touch時の関数
 function touch_func(){
   if(t_m.length == 0) return;
   //console.log(0 <= t_m[0].x && t_m[0].x <= w && 0 <= t_m[0].y && t_m[0].y <= h)
@@ -205,9 +210,13 @@ function draw() {
 function touchStarted(){
   t = touches;
   t_m = touches;
+
+  //タッチした場所のブロックの色の次の色を取得
   if(0 <= t_m[0].x && t_m[0].x <= w && 0 <= t_m[0].y && t_m[0].y <= h){
     t_num = (1+l[floor(t_m[0].y/r)][floor(t_m[0].x/r)])%N_base;
   }
+
+  
   if(25 <= t[0].x && t[0].x <= 125 && h+25 <= t[0].y && t[0].y <= h+75){
     //alert('hey')
     //const json_k = serializedArray = JSON.stringify(l);
