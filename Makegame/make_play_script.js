@@ -1,4 +1,4 @@
-//alert('V:1.00.01');
+alert('V:1.00.02');
 const w = window.innerWidth;
 const h = window.innerHeight;
 
