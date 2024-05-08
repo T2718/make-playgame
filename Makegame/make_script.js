@@ -82,47 +82,70 @@ try{
   //alert(p_s)
   let p_s_tf = false;
   if(p_s != null && (p_s.match(/-/g) || []).length == 8){
-    p_s_tf = confirm('以前のデータが残っていますが復元しますか？')
-  }
-  if(p_s_tf){
-    p_s = p_s.split('-');
-    g = Number(p_s[0]);
-    jump_v = -Number(p_s[1]);
-    margin_t = Number(p_s[2]);
-    me_x = Number(p_s[3])+0.5;
-    me_y = Number(p_s[4])-0.5;
-    n_h = Number(p_s[5]);
-    n_w = Number(p_s[6]);
+    p_s_tf = confirm('以前のデータが残っていますが復元しますか？');
+    if(p_s_tf){
+      p_s = p_s.split('-');
+      g = Number(p_s[0]);
+      jump_v = -Number(p_s[1]);
+      margin_t = Number(p_s[2]);
+      me_x = Number(p_s[3])+0.5;
+      me_y = Number(p_s[4])-0.5;
+      n_h = Number(p_s[5]);
+      n_w = Number(p_s[6]);
+      l = [];
+      l0 = [];
+      for (let k = 0; k < n_w; k++){
+        l0.push(0);
+      }
+      for (let k = 0; k < n_h; k++){
+        l.push(l0.concat())
+      }
+      let N_k_k = BigInt(p_s[7]);
+      let L_k_k = BigInt(p_s[8]);
+      //alert([g,jump_v,me_x,me_y,n_h,n_w,N_k_k,L_k_k]);
+      let k_k = L_k_k;
+      let N_n_k_k = "";
+      while(true){
+        N_n_k_k += (k_k%N_k_k).toString();
+        k_k = BigInt((k_k-k_k%N_k_k)/N_k_k);
+        if(k_k == 0n){  
+          break;
+        }
+      }
+      N_n_k_k = N_n_k_k.split("").reverse().slice(1);
+      //alert(N_n_k_k)
+      let k_k0 = 0;
+      for(let k_k_h = 0; k_k_h < n_h; k_k_h++){
+        for(let k_k_w = 0; k_k_w < n_w; k_k_w++){
+          l[k_k_h][k_k_w] = Number(N_n_k_k[k_k0]);
+          k_k0 += 1;
+        }
+      }
+    } else {
+      let n_wh = prompt('画面サイズは？( 30,15 のように入力してください。)').split(',');
+      n_w = n_wh[0];
+      n_h = n_wh[1];
+      l = [];
+      for (let k = 0; k < n_h; k++){
+        l.push([]);
+        for (let k0 = 0; k0 < n_w; k0++){
+          l[l.length-1].push(0);
+        }
+      }
+    }
+  } else {
+    let n_wh = prompt('画面サイズは？( 30,15 のように入力してください。)').split(',');
+    n_w = n_wh[0];
+    n_h = n_wh[1];
     l = [];
-    l0 = [];
-    for (let k = 0; k < n_w; k++){
-      l0.push(0);
-    }
     for (let k = 0; k < n_h; k++){
-      l.push(l0.concat())
-    }
-    let N_k_k = BigInt(p_s[7]);
-    let L_k_k = BigInt(p_s[8]);
-    //alert([g,jump_v,me_x,me_y,n_h,n_w,N_k_k,L_k_k]);
-    let k_k = L_k_k;
-    let N_n_k_k = "";
-    while(true){
-      N_n_k_k += (k_k%N_k_k).toString();
-      k_k = BigInt((k_k-k_k%N_k_k)/N_k_k);
-      if(k_k == 0n){  
-        break;
-      }
-    }
-    N_n_k_k = N_n_k_k.split("").reverse().slice(1);
-    //alert(N_n_k_k)
-    let k_k0 = 0;
-    for(let k_k_h = 0; k_k_h < n_h; k_k_h++){
-      for(let k_k_w = 0; k_k_w < n_w; k_k_w++){
-        l[k_k_h][k_k_w] = Number(N_n_k_k[k_k0]);
-        k_k0 += 1;
+      l.push([]);
+      for (let k0 = 0; k0 < n_w; k0++){
+        l[l.length-1].push(0);
       }
     }
   }
+ 
   //alert(l)
 } catch(e) {
   alert(e)
