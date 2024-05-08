@@ -3,7 +3,7 @@
 window.onerror = function(message, source, lineno, colno, error) {
   alert('error:'+message+'\n\nlineno:'+lineno.toString()+'\n\ncolno:'+colno.toString());
 }
-
+while (true){
 const w = window.innerWidth;
 const h = window.innerHeight;
 
@@ -392,7 +392,8 @@ function draw(){
   block_time_func();
 
   if(dead_tf){
-    window.location.reload();
+    //window.location.reload();
+    continue;
   }
 
 }
@@ -428,4 +429,6 @@ function touchEnded(){
   });
   touch_num = touch_x.length;
   double_touch_tf = false;
+}
+
 }
