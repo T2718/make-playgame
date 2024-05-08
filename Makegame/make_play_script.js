@@ -270,7 +270,7 @@ function hit(){
 
 function block_time_func(){
   for(let k = 0; k < block_time[4].length; k++){
-    if(Date.now()-block_list[4][k][2] >= 500){
+    if(Date.now()-block_time[4][k][2] >= 500){
       l[block_time[4][k][0]][block_time[4][k][1]] = 0;
       block_time[4].splice(k,1);
       block_time_list[4].splice(k,1);
