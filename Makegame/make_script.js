@@ -21,7 +21,7 @@ const h_all = window.innerHeight;
 
 let n_w = 30;
 let n_h = 15;
-const r = 30;
+let r = Math.floor(Math.min(w_all/n_w,h_all/n_h));
 let w = n_w*r;
 let h = n_h*r;
 let t = [];
@@ -126,6 +126,10 @@ try{
       n_w = n_wh[0];
       n_h = n_wh[1];
       l = [];
+      r = Math.floor(Math.min(w_all/n_w,h_all/n_h));
+      w = n_w*r;
+      h = n_h*r;
+      
       for (let k = 0; k < n_h; k++){
         l.push([]);
         for (let k0 = 0; k0 < n_w; k0++){
@@ -138,6 +142,9 @@ try{
     n_w = n_wh[0];
     n_h = n_wh[1];
     l = [];
+    r = Math.floor(Math.min(w_all/n_w,h_all/n_h));
+    w = n_w*r;
+    h = n_h*r;
     for (let k = 0; k < n_h; k++){
       l.push([]);
       for (let k0 = 0; k0 < n_w; k0++){
