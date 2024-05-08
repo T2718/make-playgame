@@ -208,6 +208,7 @@ function hit(){
       } 
     }
   }
+}
 
 
 function value_calc(){
