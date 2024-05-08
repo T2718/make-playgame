@@ -26,6 +26,7 @@ let h = n_h*r;
 let t = [];
 let t_m = [];
 let N_base = 3;
+let margin_t = 200;
 
 let me_x = 2.5;
 let me_y = 6.5;
@@ -56,6 +57,8 @@ valueset.onclick = () => {
   if(g_k != null) g = Math.abs(Number(g_k));
   let jump_k = prompt("ジャンプ速度(通常7)","");
   if(jump_k != null) jump_v = -Math.abs(Number(jump_k));
+  let margin_k = prompt("操作のマージンタイム(通常0.2)","");
+  if(margin_k != null) margin_t = Math.floor(1000*Number(margin_k));
   let wh_k = prompt("自分の座標(左上から数えて何マス目か(四角の左上基準(1,1)))\n2,6  のように入力してください。","");
   if(wh_k != null){
     try{
@@ -225,7 +228,7 @@ function touchStarted(){
       let l_k0 = ""
       //alert('try')
     
-      l_k0 = [g,-jump_v,me_x-0.5,me_y-0.5,n_h,n_w,N_base].join('-')
+      l_k0 = [g,-jump_v,margin_t,me_x-0.5,me_y-0.5,n_h,n_w,N_base].join('-')
     
       l_k = l_k0+"-"+l_k;
       //alert(l_k);
