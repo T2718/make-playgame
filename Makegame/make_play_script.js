@@ -191,7 +191,13 @@ function hit(){
           me_y = k+1.5;
           hit_tf = true;
         }
-      } else if(l[k][k0] == 2){
+      } 
+    }
+  }
+  for(let k = 0; k < n_h; k++){
+    for(let k0 = 0; k0 < n_w; k0++){
+      console.log(l[k][k0])
+      if(l[k][k0] == 2){
         try{
           if(k0 < me_x+0.5 && me_x-0.5 < k0+1 && me_y-0.5 < k+1 && k < me_y+0.5){
             dead1_tf = true;
@@ -199,12 +205,9 @@ function hit(){
         } catch(e) {
           alert(e)
         }
-      }
+      } 
     }
   }
-  
-}
-
 
 
 function value_calc(){
