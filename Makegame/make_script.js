@@ -1,3 +1,4 @@
+alert('var:1.00.02');
 let canvas_id = document.getElementById('canvas');
 let body_id = document.body;
 
