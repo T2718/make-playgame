@@ -33,7 +33,7 @@ let me_y = 12.5;
 let jump_v = -7;
 let g = 6;
 
-let margin = 100;
+let margin = 50;
 
 
 
