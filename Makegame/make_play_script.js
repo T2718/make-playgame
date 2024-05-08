@@ -6,8 +6,8 @@ window.onerror = function(message, source, lineno, colno, error) {
 
 let while_tf = true;
 
-while (while_tf){
-  while_tf = false;
+/*while (while_tf){
+  while_tf = false;*/
 const w = window.innerWidth;
 const h = window.innerHeight;
 
@@ -396,9 +396,9 @@ function draw(){
   block_time_func();
 
   if(dead_tf){
-    //window.location.reload();
-    while_tf = true;
-    continue;
+    window.location.reload();
+    /*while_tf = true;
+    continue;*/
   }
 
 }
@@ -435,5 +435,5 @@ function touchEnded(){
   touch_num = touch_x.length;
   double_touch_tf = false;
 }
-alert('Continue');
-}
+/*alert('Continue');
+}*/
