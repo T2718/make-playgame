@@ -26,7 +26,7 @@ let h = n_h*r;
 let t = [];
 let t_m = [];
 let N_base = 3;
-let margin_t = 200;
+let margin_t = 50;
 
 let me_x = 2.5;
 let me_y = 6.5;
@@ -83,10 +83,11 @@ try{
     p_s = p_s.split('-');
     g = Number(p_s[0]);
     jump_v = -Number(p_s[1]);
-    me_x = Number(p_s[2])+0.5;
-    me_y = Number(p_s[3])+0.5;
-    n_h = Number(p_s[4]);
-    n_w = Number(p_s[5]);
+    margin_t = Number(p_s[2]);
+    me_x = Number(p_s[3])+0.5;
+    me_y = Number(p_s[4])-0.5;
+    n_h = Number(p_s[5]);
+    n_w = Number(p_s[6]);
     l = [];
     l0 = [];
     for (let k = 0; k < n_w; k++){
@@ -95,8 +96,8 @@ try{
     for (let k = 0; k < n_h; k++){
       l.push(l0.concat())
     }
-    let N_k_k = BigInt(p_s[6]);
-    let L_k_k = BigInt(p_s[7]);
+    let N_k_k = BigInt(p_s[7]);
+    let L_k_k = BigInt(p_s[8]);
     //alert([g,jump_v,me_x,me_y,n_h,n_w,N_k_k,L_k_k]);
     let k_k = L_k_k;
     let N_n_k_k = "";
