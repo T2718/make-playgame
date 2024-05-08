@@ -33,6 +33,8 @@ let me_y = 12.5;
 let jump_v = -7;
 let g = 6;
 
+let margin = 100;
+
 
 
 //クエリパラメータの処理
@@ -40,10 +42,11 @@ try{
   p_s = params_l.split('-');
   g = Number(p_s[0]);
   jump_v = -Number(p_s[1]);
-  me_x = Number(p_s[2])+0.5;
-  me_y = Number(p_s[3])+0.5;
-  n_h = Number(p_s[4]);
-  n_w = Number(p_s[5]);
+  margin = Number(p_s[2]);
+  me_x = Number(p_s[3])+0.5;
+  me_y = Number(p_s[4])-0.5;
+  n_h = Number(p_s[5]);
+  n_w = Number(p_s[6]);
   l = [];
   l0 = []
   for (let k = 0; k < n_w; k++){
@@ -52,8 +55,8 @@ try{
   for (let k = 0; k < n_h; k++){
     l.push(l0.concat())
   }
-  let N_k_k = BigInt(p_s[6]);
-  let L_k_k = BigInt(p_s[7]);
+  let N_k_k = BigInt(p_s[7]);
+  let L_k_k = BigInt(p_s[8]);
   let k_k = L_k_k;
   let N_n_k_k = "";
   while(true){
@@ -99,7 +102,7 @@ let double_touch_start = Date.now();
 let double_touch_tf = false;
 let ground_tf = false;
 
-let margin = 100;
+
 
 
 if(n_h/n_w > h/w){
