@@ -92,6 +92,9 @@ try{
       me_y = Number(p_s[4])-0.5;
       n_h = Number(p_s[5]);
       n_w = Number(p_s[6]);
+      r = Math.floor(Math.min(w_all/n_w,h_all/n_h));
+      w = n_w*r;
+      h = n_h*r;
       l = [];
       l0 = [];
       for (let k = 0; k < n_w; k++){
