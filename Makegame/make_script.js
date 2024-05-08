@@ -26,7 +26,7 @@ let w = n_w*r;
 let h = n_h*r;
 let t = [];
 let t_m = [];
-let N_base = 3;
+let N_base = 5;
 let margin_t = 50;
 
 let me_x = 2.5;
@@ -160,7 +160,7 @@ function touch_func(){
   if(0 <= t_m[0].x && t_m[0].x <= w && 0 <= t_m[0].y && t_m[0].y <= h){
     l[floor(t_m[0].y/r)][floor(t_m[0].x/r)] = t_num;
 
-    console.log(l[floor(t_m[0].y/r)][floor(t_m[0].x/r)])
+    //console.log(l[floor(t_m[0].y/r)][floor(t_m[0].x/r)])
   }
 }
 
@@ -171,6 +171,10 @@ function draw_block(){
       fill(255-100*l[k][k0]);
       if(l[k][k0] == 2){
         fill(255,0,0)
+      } else if(l[k][k0] == 3){
+        fill(255,255,0);
+      } else if(l[k][k0] == 4){
+        fill(0,255,255);
       }
       rect(k0*r,k*r,r,r);
     }
