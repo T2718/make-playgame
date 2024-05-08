@@ -188,7 +188,7 @@ function hit(){
       //右
       //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
       if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x-0.5 > k0+0.5 && k0+1 > me_x-0.5)){
-        if(l[k][k0] == 1){
+        if(l[k][k0] == 1 || l[k][k0] == 4){
           v_x = 0;
           me_x = k0+1.5;
           hit_tf = true;
@@ -197,7 +197,7 @@ function hit(){
       //左
       //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
       if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x+0.5 < k0+0.5 && k0 < me_x+0.5)){
-        if(l[k][k0] == 1){
+        if(l[k][k0] == 1 || l[k][k0] == 4){
           v_x = 0;
           me_x = k0-0.5;
           hit_tf = true;
@@ -205,7 +205,7 @@ function hit(){
       }
       //下
       if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y-0.5 < k+1 && k+0.5 < me_y-0.5)){
-        if(l[k][k0] == 1){
+        if(l[k][k0] == 1 || l[k][k0] == 4){
           v_y = 0;
           me_y = k+1.5;
           hit_tf = true;
@@ -236,8 +236,13 @@ function hit(){
         //上
         if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y+0.5 > k && k+0.5 > me_y+0.5)){
           if(l[k][k0] == 4){
+            v_y = 0;
+            ground_tf = true;
             l[k][k0] = 0;
+            hit_tf = true;
+            me_y = k-0.5;
           }
+        }
       } catch(e) {
         alert(e)
       }
