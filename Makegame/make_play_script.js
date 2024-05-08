@@ -430,5 +430,5 @@ function touchEnded(){
   touch_num = touch_x.length;
   double_touch_tf = false;
 }
-
+alert('Continue');
 }
