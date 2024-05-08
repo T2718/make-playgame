@@ -13,6 +13,8 @@ let dead_tf = false;
 let dead1_tf = false;
 let p_s = [];
 
+let goal_tf = false;
+
 let n_h = 15;
 let n_w = 30;
 let l  = [];
@@ -137,7 +139,11 @@ function draw_all(){
       fill(255-100*l[k][k0]);
       //fill(255-100*l[k][k0]);
       if(l[k][k0] == 2){
-        fill(255,0,0)
+        fill(255,0,0);
+      } else if(l[k][k0] == 3){
+        fill(255,255,0);
+      } else if(l[k][k0] == 4){
+        fill(0,255,255);
       }
       strokeWeight(1);
       //rect(k0*r,k*r,r,r);
@@ -163,41 +169,59 @@ function hit(){
   textSize(50);
   let list_k = [];
   hit_tf = false;
+  
+  //通常ブロックの処理(また、ゴールの処理も)
   for(let k = 0; k < n_h; k++){
     for(let k0 = 0; k0 < n_w; k0++){
       console.log(l[k][k0])
-      if(l[k][k0] == 1){
-        //上
-        if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y+0.5 > k && k+0.5 > me_y+0.5)){
+      //上
+      if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y+0.5 > k && k+0.5 > me_y+0.5)){
+        if(l[k][k0] == 1){
           v_y = 0;
           me_y = k-0.5;
           //hit_tf = true;
           ground_tf = true;
           hit_tf = true;
         }
-        //右
-        //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
-        if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x-0.5 > k0+0.5 && k0+1 > me_x-0.5)){
+      }
+      //右
+      //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
+      if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x-0.5 > k0+0.5 && k0+1 > me_x-0.5)){
+        if(l[k][k0] == 1){
           v_x = 0;
           me_x = k0+1.5;
           hit_tf = true;
         }
-        //左
-        //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
-        if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x+0.5 < k0+0.5 && k0 < me_x+0.5)){
+      }
+      //左
+      //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
+      if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x+0.5 < k0+0.5 && k0 < me_x+0.5)){
+        if(l[k][k0] == 1){
           v_x = 0;
           me_x = k0-0.5;
           hit_tf = true;
         }
-        //下
-        if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y-0.5 < k+1 && k+0.5 < me_y-0.5)){
+      }
+      //下
+      if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y-0.5 < k+1 && k+0.5 < me_y-0.5)){
+        if(l[k][k0] == 1){
           v_y = 0;
           me_y = k+1.5;
           hit_tf = true;
         }
-      } 
+      }
+      //どこでも
+      if(k0 < me_x-0.5 && me_x+0.5 < k0+1 && k < me_y-0.5 && me_y+0.5 < k+1){
+        if(l[k][k0] == 3) {
+          
+          goal_tf = true;
+        }
+      }
     }
   }
+
+  
+  //通常ブロックの処理の後の処理
   for(let k = 0; k < n_h; k++){
     for(let k0 = 0; k0 < n_w; k0++){
       console.log(l[k][k0])
@@ -209,7 +233,7 @@ function hit(){
         } catch(e) {
           alert(e)
         }
-      } 
+      }
     }
   }
 }
@@ -253,17 +277,21 @@ function value_calc(){
   if(dead1_tf){
     
     //alert('dead')
-    textSize(20);
-    text('Dead',100,100);
+    
     if(dead_tf == false) {
-      alert("You Died!")
+      textSize(20);
+      text('Dead',100,100);
+      
     }
-    dead_tf = true;
-
     
   }
   dead1_tf = false;
   //text(list_k.toString(),100,100);
+
+  if(goal_tf){
+    textSize(20);
+    text('Goal',100,100);
+  }
 }
 
 
@@ -277,6 +305,13 @@ function draw(){
 
   background(255);
 
+  if(dead1_tf && dead_tf == false){
+    alert("You Died!")
+  }
+  if(goal_tf) {
+    alert("Goal!")
+  }
+  
   value_calc();
 
   draw_all();
