@@ -57,7 +57,7 @@ valueset.onclick = () => {
   if(g_k != null) g = Math.abs(Number(g_k));
   let jump_k = prompt("ジャンプ速度(通常7)","");
   if(jump_k != null) jump_v = -Math.abs(Number(jump_k));
-  let margin_k = prompt("操作のマージンタイム(通常0.2)","");
+  let margin_k = prompt("操作のマージンタイム(通常0.05)","");
   if(margin_k != null) margin_t = Math.floor(1000*Number(margin_k));
   let wh_k = prompt("自分の座標(左上から数えて何マス目か(四角の左上基準(1,1)))\n2,6  のように入力してください。","");
   if(wh_k != null){
