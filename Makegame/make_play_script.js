@@ -214,7 +214,6 @@ function hit(){
       //どこでも
       if(k0 < me_x+0.5 && me_x-0.5 < k0+1 && k < me_y+0.5 && me_y-0.5 < k+1){
         if(l[k][k0] == 3) {
-          
           goal_tf = true;
         }
       }
@@ -226,14 +225,21 @@ function hit(){
   for(let k = 0; k < n_h; k++){
     for(let k0 = 0; k0 < n_w; k0++){
       console.log(l[k][k0])
-      if(l[k][k0] == 2){
-        try{
-          if(k0 < me_x+0.5 && me_x-0.5 < k0+1 && me_y-0.5 < k+1 && k < me_y+0.5){
+      
+      try{
+        //どこでも
+        if(k0 < me_x+0.5 && me_x-0.5 < k0+1 && me_y-0.5 < k+1 && k < me_y+0.5){
+          if(l[k][k0] == 2){
             dead1_tf = true;
           }
-        } catch(e) {
-          alert(e)
         }
+        //上
+        if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y+0.5 > k && k+0.5 > me_y+0.5)){
+          if(l[k][k0] == 4){
+            l[k][k0] = 0;
+          }
+      } catch(e) {
+        alert(e)
       }
     }
   }
