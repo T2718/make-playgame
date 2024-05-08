@@ -212,7 +212,7 @@ function hit(){
         }
       }
       //どこでも
-      if(k0 < me_x-0.5 && me_x+0.5 < k0+1 && k < me_y-0.5 && me_y+0.5 < k+1){
+      if(k0 < me_x+0.5 && me_x-0.5 < k0+1 && k < me_y+0.5 && me_y-0.5 < k+1){
         if(l[k][k0] == 3) {
           
           goal_tf = true;
