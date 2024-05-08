@@ -18,6 +18,7 @@ let goal1_tf = false;
 
 
 let block_time = {4:[]};
+let block_time_list = {4:[]};
 
 let n_h = 15;
 let n_w = 30;
@@ -246,7 +247,10 @@ function hit(){
             hit_tf = true;
             me_y = k-0.5;
 
-            block_time[4].push([k,k0,Date.now()]);
+            if(block_time_list[4].indexOf([k,k0]) == -1){
+              block_time[4].push([k,k0,Date.now()]);
+              block_time_list[4].push([k,k0]);
+            }
 
           }
         }
@@ -260,10 +264,11 @@ function hit(){
 
 
 function block_time_func(){
-  for(let k = 0; k < block_list[4].length; k++){
+  for(let k = 0; k < block_time[4].length; k++){
     if(Date.now()-block_list[4][k][2] >= 500){
-      l[block_list[4][k][0]][block_list[4][k][1]] = 0;
-      block_list[4].splice(k,1);
+      l[block_time[4][k][0]][block_time[4][k][1]] = 0;
+      block_time[4].splice(k,1);
+      block_time_list[4].splice(k,1);
     }
   }
 }
@@ -349,6 +354,8 @@ function draw(){
   draw_all();
 
   hit();
+
+  block_time_func();
 
   if(dead_tf){
     window.location.reload();
