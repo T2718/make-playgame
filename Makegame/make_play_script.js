@@ -14,6 +14,7 @@ let dead1_tf = false;
 let p_s = [];
 
 let goal_tf = false;
+let goal1_tf = false;
 
 let n_h = 15;
 let n_w = 30;
@@ -277,10 +278,10 @@ function value_calc(){
   if(dead1_tf){
     
     //alert('dead')
-    
+    textSize(20);
+    text('Dead',100,100);
     if(dead_tf == false) {
-      textSize(20);
-      text('Dead',100,100);
+      
       
     }
     
@@ -305,11 +306,14 @@ function draw(){
 
   background(255);
 
+  //2つあるのはalertを何回もしないようにするため
   if(dead1_tf && dead_tf == false){
     alert("You Died!")
+    dead_tf = true;
   }
-  if(goal_tf) {
+  if(goal_tf && goal1_tf == false) {
     alert("Goal!")
+    goal1_tf = true;
   }
   
   value_calc();
