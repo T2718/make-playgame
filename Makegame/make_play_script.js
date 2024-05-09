@@ -12,6 +12,7 @@ let while_tf = true;
   while_tf = false;*/
 const w = window.innerWidth;
 const h = window.innerHeight;
+let cubist_size = 0.8;
 
 //let l = [];
 //lは[[◯*W]*H]個で入っている
