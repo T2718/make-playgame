@@ -13,6 +13,7 @@ let while_tf = true;
 const w = window.innerWidth;
 const h = window.innerHeight;
 let cubist_size = 0.8;
+let half_cubist = cubist_size/2;
 
 //let l = [];
 //lは[[◯*W]*H]個で入っている
@@ -62,6 +63,7 @@ try{
   g = Number(p_s[0]);
   jump_v = -Number(p_s[1]);
   margin = Number(p_s[2]);
+  //中心座標にするため0.5
   me_x = Number(p_s[3])+0.5;
   me_y = Number(p_s[4])-0.5;
   n_h = Number(p_s[5]);
@@ -176,7 +178,7 @@ function draw_all(){
   noStroke();
   fill(0,0,255);
   
-  rect(r*(me_x-0.5),(me_y-0.5)*r,r,r);
+  rect(r*(me_x-half_cubist),(me_y-half_cubist)*r,cubist_size*r,cubist_size*r);
 }
 
 
@@ -197,10 +199,10 @@ function hit(){
     for(let k0 = 0; k0 < n_w; k0++){
       console.log(l[k][k0])
       //上
-      if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y+0.5 > k && k+0.5 > me_y+0.5)){
+      if((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y+half_cubist > k && k+half_cubist > me_y+half_cubist)){
         if(l[k][k0] == 1){
           v_y = 0;
-          me_y = k-0.5;
+          me_y = k-half_cubist;
           //hit_tf = true;
           ground_tf = true;
           hit_tf = true;
@@ -208,32 +210,32 @@ function hit(){
       }
       //右
       //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
-      if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x-0.5 > k0+0.5 && k0+1 > me_x-0.5)){
+      if((k < me_y+half_cubist && me_y-half_cubist < k+1) && (me_x-half_cubist > k0+0.5 && k0+1 > me_x-half_cubist)){
         if(l[k][k0] == 1){
           v_x = 0;
-          me_x = k0+1.5;
+          me_x = k0+1+half_cubist;
           hit_tf = true;
         }
       }
       //左
       //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
-      if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x+0.5 < k0+0.5 && k0 < me_x+0.5)){
+      if((k < me_y+half_cubist && me_y-half_cubist < k+1) && (me_x+half_cubist < k0+0.5 && k0 < me_x+half_cubist)){
         if(l[k][k0] == 1){
           v_x = 0;
-          me_x = k0-0.5;
+          me_x = k0-half_cubist;
           hit_tf = true;
         }
       }
       //下
-      if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y-0.5 < k+1 && k+0.5 < me_y-0.5)){
+      if((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist)){
         if(l[k][k0] == 1){
           v_y = 0;
-          me_y = k+1.5;
+          me_y = k+1+half_cubist;
           hit_tf = true;
         }
       }
       //どこでも
-      if(k0 < me_x+0.5 && me_x-0.5 < k0+1 && k < me_y+0.5 && me_y-0.5 < k+1){
+      if(k0 < me_x+half_cubist && me_x-half_cubist < k0+1 && k < me_y+half_cubist && me_y-half_cubist < k+1){
         if(l[k][k0] == 3) {
           goal_tf = true;
         }
@@ -249,12 +251,12 @@ function hit(){
       
       try{
         //上
-        if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y+0.5 > k && k+0.5 > me_y+0.5)){
+        if((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y+half_cubist > k && k+0.5 > me_y+half_cubist)){
           if(l[k][k0] == 4){
             v_y = 0;
             ground_tf = true;
             hit_tf = true;
-            me_y = k-0.5;
+            me_y = k-half_cubist;
 
             if(block_time_list[4].indexOf([k,k0]) == -1){
               block_time[4].push([k,k0,Date.now()]);
@@ -264,33 +266,33 @@ function hit(){
           }
         }
         //右
-        //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
-        if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x-0.5 > k0+0.5 && k0+1 > me_x-0.5)){
+        //list_k.push(me_x-half_cubist > k0 && k0+1 > me_x-half_cubist)
+        if((k < me_y+half_cubist && me_y-half_cubist < k+1) && (me_x-half_cubist > k0+0.5 && k0+1 > me_x-half_cubist)){
           if(l[k][k0] == 4){
             v_x = 0;
-            me_x = k0+1.5;
+            me_x = k0+1+half_cubist;
             hit_tf = true;
           }
         }
         //左
         //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
-        if((k < me_y+0.5 && me_y-0.5 < k+1) && (me_x+0.5 < k0+0.5 && k0 < me_x+0.5)){
+        if((k < me_y+half_cubist && me_y-half_cubist < k+1) && (me_x+half_cubist < k0+0.5 && k0 < me_x+half_cubist)){
           if(l[k][k0] == 4){
             v_x = 0;
-            me_x = k0-0.5;
+            me_x = k0-half_cubist;
             hit_tf = true;
           }
         }
         //下
-        if((k0 < me_x+0.5 && me_x-0.5 < k0+1) && (me_y-0.5 < k+1 && k+0.5 < me_y-0.5)){
+        if((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist)){
           if(l[k][k0] == 4){
             v_y = 0;
-            me_y = k+1.5;
+            me_y = k+1+half_cubist;
             hit_tf = true;
           }
         }
         //どこでも
-        if(k0 < me_x+0.5 && me_x-0.5 < k0+1 && me_y-0.5 < k+1 && k < me_y+0.5){
+        if(k0 < me_x+half_cubist && me_x-half_cubist < k0+1 && me_y-half_cubist < k+1 && k < me_y+half_cubist){
           if(l[k][k0] == 2){
             dead1_tf = true;
           }
