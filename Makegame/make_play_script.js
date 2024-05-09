@@ -6,6 +6,8 @@ window.onerror = function(message, source, lineno, colno, error) {
 
 let while_tf = true;
 
+alert('hey');
+
 /*while (while_tf){
   while_tf = false;*/
 const w = window.innerWidth;
