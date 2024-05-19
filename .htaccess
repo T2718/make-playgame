@@ -1,1 +1,5 @@
 ErrorDocument 404 /404.html
+
+RewriteEngine on
+ RewriteRule https://mathotagamma.github.io/make-playgame/homepage
+ https://mathotagamma.github.io/homepage [R=301,L]
