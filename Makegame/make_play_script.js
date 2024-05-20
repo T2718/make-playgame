@@ -197,7 +197,15 @@ function hit(){
   //通常ブロックの処理(また、ゴールの処理も)
   for(let k = 0; k < n_h; k++){
     for(let k0 = 0; k0 < n_w; k0++){
-      console.log(l[k][k0])
+      //console.log(l[k][k0])
+      //下
+      if((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist)){
+        if(l[k][k0] == 1){
+          v_y = 0;
+          me_y = k+1+half_cubist;
+          hit_tf = true;
+        }
+      }
       //上
       if((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y+half_cubist > k && k+half_cubist > me_y+half_cubist)){
         if(l[k][k0] == 1){
@@ -226,14 +234,7 @@ function hit(){
           hit_tf = true;
         }
       }
-      //下
-      if((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist)){
-        if(l[k][k0] == 1){
-          v_y = 0;
-          me_y = k+1+half_cubist;
-          hit_tf = true;
-        }
-      }
+      
       //どこでも
       if(k0 < me_x+half_cubist && me_x-half_cubist < k0+1 && k < me_y+half_cubist && me_y-half_cubist < k+1){
         if(l[k][k0] == 3) {
