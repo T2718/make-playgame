@@ -1,4 +1,4 @@
-//alert('V:1.00.02');
+//alert('V:1.00.03');
 
 window.onerror = function(message, source, lineno, colno, error) {
   alert('error:'+message+'\n\nlineno:'+lineno.toString()+'\n\ncolno:'+colno.toString());
