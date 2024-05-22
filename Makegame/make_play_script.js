@@ -202,13 +202,9 @@ function hit(){
     for(let k0 = 0; k0 < n_w; k0++){
       //console.log(l[k][k0])
       //下(頭上にくっつく)
-      if(((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist))){
+      if(wall_head_tf == 1 && ((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist))){
         if(l[k][k0] == 1){
-          if(wall_head_tf == 1){
-            v_y = -0.01;
-          } else {
-            v_y = 0.01;
-          }
+          v_y = -0.01;
           me_y = k+1+half_cubist;
           hit_tf = true;
         }
@@ -243,13 +239,13 @@ function hit(){
       }
 
       //下(壁キック)
-      /*if(wall_head_tf == 0 && ((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist))){
+      if(wall_head_tf == 0 && ((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist))){
         if(l[k][k0] == 1){
           v_y = 0;
           me_y = k+1+half_cubist;
           hit_tf = true;
         }
-      }*/
+      }
       
       //どこでも
       if(k0 < me_x+half_cubist && me_x-half_cubist < k0+1 && k < me_y+half_cubist && me_y-half_cubist < k+1){
