@@ -133,6 +133,8 @@ let ground_tf = false;
 
 let ground_wall_tf = false;
 
+let ground_pre_tf = false;
+
 
 
 
@@ -229,6 +231,7 @@ function hit(){
             v_y = 0;
             ground_tf = true;
             ground_wall_tf = true;
+            ground_pre_tf = true;
           } else {
             v_x = 0;
           }
@@ -240,6 +243,7 @@ function hit(){
         if(ground_wall_tf){
           ground_wall_tf = false;
           ground_tf = false;
+          ground_pre_tf = true;
         }
       }
       //左
