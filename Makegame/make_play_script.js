@@ -239,13 +239,13 @@ function hit(){
       }
 
       //下(壁キック)
-      /*if(wall_head_tf == 0 && ((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist))){
+      if(ground_tf == false && wall_head_tf == 0 && ((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist))){
         if(l[k][k0] == 1){
           v_y = 0;
           me_y = k+1+half_cubist;
           hit_tf = true;
         }
-      }*/
+      }
       
       //どこでも
       if(k0 < me_x+half_cubist && me_x-half_cubist < k0+1 && k < me_y+half_cubist && me_y-half_cubist < k+1){
