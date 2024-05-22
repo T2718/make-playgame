@@ -210,9 +210,17 @@ function hit(){
         }
       }
       //上
+      /*if(wall_head_tf == 0 && (k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y+half_cubist > k && k+half_cubist > me_y+half_cubist)){
+        if(l[k][k0] == 1){
+          v_y = 0;
+          me_y = k-half_cubist;
+          //hit_tf = true;
+          ground_tf = true;
+          hit_tf = true;
+        }
+      }*/
       if((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y+half_cubist > k && k+half_cubist > me_y+half_cubist)){
         if(l[k][k0] == 1){
-          alert('up');
           v_y = 0;
           me_y = k-half_cubist;
           //hit_tf = true;
@@ -224,6 +232,11 @@ function hit(){
       //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
       if((k < me_y+half_cubist && me_y-half_cubist < k+1) && (me_x-half_cubist > k0+0.5 && k0+1 > me_x-half_cubist)){
         if(l[k][k0] == 1){
+          if(wall_head_tf == 0){
+            v_y = 0;
+          } else {
+            v_x = 0;
+          }
           v_x = 0;
           me_x = k0+1+half_cubist;
           hit_tf = true;
@@ -233,7 +246,12 @@ function hit(){
       //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
       if((k < me_y+half_cubist && me_y-half_cubist < k+1) && (me_x+half_cubist < k0+0.5 && k0 < me_x+half_cubist)){
         if(l[k][k0] == 1){
-          v_x = 0;
+          if(wall_head_tf == 0){
+            v_y = 0;
+          } else {
+            v_x = 0;
+          }
+          
           me_x = k0-half_cubist;
           hit_tf = true;
         }
