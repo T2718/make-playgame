@@ -131,6 +131,8 @@ let double_touch_start = Date.now();
 let double_touch_tf = false;
 let ground_tf = false;
 
+let ground_wall_tf = false;
+
 
 
 
@@ -226,12 +228,18 @@ function hit(){
           if(wall_head_tf == 0){
             v_y = 0;
             ground_tf = true;
+            ground_wall_tf = true;
           } else {
             v_x = 0;
           }
           v_x = 0;
           me_x = k0+1+half_cubist;
           hit_tf = true;
+        }
+      } else {
+        if(ground_wall_tf){
+          ground_wall_tf = false;
+          ground_tf = false;
         }
       }
       //左
@@ -241,12 +249,18 @@ function hit(){
           if(wall_head_tf == 0){
             v_y = 0;
             ground_tf = true;
+            ground_wall_tf = true;
           } else {
             v_x = 0;
           }
           
           me_x = k0-half_cubist;
           hit_tf = true;
+        }
+      } else {
+        if(ground_wall_tf){
+          ground_wall_tf = false;
+          ground_tf = false;
         }
       }
 
