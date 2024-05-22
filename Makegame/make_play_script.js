@@ -207,7 +207,7 @@ function hit(){
           if(wall_head_tf == 1){
             v_y = -0.01;
           } else {
-            v_y = 0;
+            v_y = 0.01;
           }
           me_y = k+1+half_cubist;
           hit_tf = true;
