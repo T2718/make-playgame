@@ -212,6 +212,7 @@ function hit(){
       //上
       if((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y+half_cubist > k && k+half_cubist > me_y+half_cubist)){
         if(l[k][k0] == 1){
+          alert('up');
           v_y = 0;
           me_y = k-half_cubist;
           //hit_tf = true;
