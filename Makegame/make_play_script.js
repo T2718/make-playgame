@@ -204,6 +204,8 @@ function hit(){
   //通常ブロックの処理(また、ゴールの処理も)
   for(let k = 0; k < n_h; k++){
     for(let k0 = 0; k0 < n_w; k0++){
+
+      ground_pre_tf = false;
       //console.log(l[k][k0])
       //下(頭上にくっつく)
       if(wall_head_tf == 1 && ((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist))){
@@ -239,12 +241,6 @@ function hit(){
           me_x = k0+1+half_cubist;
           hit_tf = true;
         }
-      } else {
-        if(ground_wall_tf){
-          ground_wall_tf = false;
-          ground_tf = false;
-          ground_pre_tf = true;
-        }
       }
       //左
       //list_k.push(me_x-0.5 > k0 && k0+1 > me_x-0.5)
@@ -261,11 +257,6 @@ function hit(){
           me_x = k0-half_cubist;
           hit_tf = true;
         }
-      } else {
-        if(ground_wall_tf){
-          ground_wall_tf = false;
-          ground_tf = false;
-        }
       }
 
       //下(壁キック)
@@ -276,11 +267,21 @@ function hit(){
           hit_tf = true;
         }
       }
+
       
       //どこでも
       if(k0 < me_x+half_cubist && me_x-half_cubist < k0+1 && k < me_y+half_cubist && me_y-half_cubist < k+1){
         if(l[k][k0] == 3) {
           goal_tf = true;
+        }
+      }
+
+
+      {
+        if(ground_pre_tf){
+          ground_wall_tf = false;
+          ground_tf = false;
+          grounf_pre_tf = false;
         }
       }
     }
