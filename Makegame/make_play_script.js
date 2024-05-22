@@ -38,6 +38,9 @@ let n_w = 30;
 let l  = [];
 let l0 = [];
 
+//wall_head_tfが0の時壁キックし、1の時頭上にくっつく
+let wall_head_tf = 0;
+
 let hit_tf = false;
 for (let k = 0; k < n_w; k++){
   l0.push(0);
@@ -198,8 +201,8 @@ function hit(){
   for(let k = 0; k < n_h; k++){
     for(let k0 = 0; k0 < n_w; k0++){
       //console.log(l[k][k0])
-      //下
-      if((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist)){
+      //下(頭上にくっつく)
+      if(wall_head_tf == 1 && ((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist))){
         if(l[k][k0] == 1){
           v_y = -0.01;
           me_y = k+1+half_cubist;
@@ -231,6 +234,15 @@ function hit(){
         if(l[k][k0] == 1){
           v_x = 0;
           me_x = k0-half_cubist;
+          hit_tf = true;
+        }
+      }
+
+      //下(壁キック)
+      if(wall_head_tf == 0 && ((k0 < me_x+half_cubist && me_x-half_cubist < k0+1) && (me_y-half_cubist < k+1 && k+0.5 < me_y-half_cubist))){
+        if(l[k][k0] == 1){
+          v_y = -0.01;
+          me_y = k+1+half_cubist;
           hit_tf = true;
         }
       }
